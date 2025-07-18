@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
@@ -17,17 +17,15 @@ import Footer from "./components/ui/footer/Footer";
 //   </BrowserRouter>
 // );
 
-fetch("/config.json")
-  .then((res) => res.json())
-  .then((config) => {
-    window.appConfig = config;
-    createRoot(document.getElementById("root")).render(
-      <BrowserRouter>
-        <StrictMode>
-          <Provider store={store}>
-            <App />
-          </Provider>
-        </StrictMode>
-      </BrowserRouter>
-    );
-  });
+const root = createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <StrictMode>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </StrictMode>
+    </BrowserRouter>
+  </React.StrictMode>
+);
