@@ -7,16 +7,6 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import Footer from "./components/ui/footer/Footer";
 
-// createRoot(document.getElementById("root")).render(
-//   <BrowserRouter>
-//     <StrictMode>
-//       <Provider store={store}>
-//         <App />
-//       </Provider>
-//     </StrictMode>
-//   </BrowserRouter>
-// );
-
 const root = createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

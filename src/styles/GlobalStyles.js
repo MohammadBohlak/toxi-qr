@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
+
   * {
     margin: 0;
     padding: 0;
@@ -52,6 +53,28 @@ export const GlobalStyles = createGlobalStyle`
      --height-nav: 75px 
     }
   }
+  @keyframes skeleton {
+    0% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 0.2;
+    }
+    100% {
+      opacity: 0.5;
+    }
+  }
+  .skeleton{
+      animation: skeleton 1.5s infinite ease-in-out;
+  background-color: ${({ theme }) => theme.colors.primary};
+}
+.sub-skeleton{
+      animation: skeleton 1.5s infinite ease-in-out;
+  background-color: ${({ theme }) => theme.colors.backLight};
+}
+    
+  
+  
 
   /**
    * LATO FAMILY

@@ -13,22 +13,30 @@ import Devices from "../../components/homeComponents/devices/Devices";
 import SwiperExperts from "../../components/swiperExperts/SwiperExperts";
 import DetectionPage from "../Detection/DetectionPage";
 import Footer from "../../components/ui/footer/Footer";
+import SkeletonHome from "./SkeletonHome";
+import { useSelector } from "react-redux";
 
 const StyledHome = styled.section`
   /* height: 500px; */
   width: 100%;
 `;
 const Home = () => {
+  const showLoader = useSelector((state) => state.loader.isLoading);
+
   return (
     <>
       <StyledHome>
         <SwiperSnakes images={[img1, img2, img3, img4, img5]} />
-        <HowWork />
-        <DetectionPage />
-        <ContributingSection />
-        <Features />
-        <Devices />
-        <SwiperExperts />
+        {!showLoader && (
+          <>
+            <HowWork />
+            <DetectionPage />
+            <ContributingSection />
+            <Features />
+            <Devices />
+            <SwiperExperts />
+          </>
+        )}
       </StyledHome>
     </>
   );

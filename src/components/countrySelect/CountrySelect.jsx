@@ -47,31 +47,12 @@ export default function CountrySelect({ name, value, onChange }) {
     </components.SingleValue>
   );
 
-  // 4) تنسيقات بسيطة
-  const customStyles = {
-    control: (base) => ({
-      ...base,
-      padding: 0,
-      fontFamily: "'Tajawal', sans-serif",
-    }),
-    option: (base, state) => ({
-      ...base,
-      backgroundColor: state.isFocused
-        ? "#f0f0f0"
-        : state.isSelected
-        ? "#e6e6e6"
-        : "#fff",
-      color: "#333",
-    }),
-  };
-
   return (
     <Wrapper className="select">
       <Select
         name={name}
         options={options}
         components={{ Option, SingleValue }}
-        // styles={customStyles}
         placeholder={t("detection.form.country.placeholder")}
         isSearchable
         value={options.find((o) => o.value === value) || null}

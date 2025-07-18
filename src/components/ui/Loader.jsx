@@ -4,7 +4,7 @@ import styled from "styled-components";
 const StyledLoader = styled.div`
   /* HTML: <div class="loader"></div> */
   /* HTML: <div class="loader"></div> */
-  --s: 20px;
+  --s: 40px;
 
   --_d: calc(0.353 * var(--s));
   width: calc(var(--s) + var(--_d));
@@ -14,8 +14,7 @@ const StyledLoader = styled.div`
   z-index: 10000000;
   top: 50%;
   left: 50%;
-  /* background-color: white; */
-  transform: translate(-100%, -100%);
+  transform: translate(-150%, -100%);
   &:before,
   &:after {
     content: "";
@@ -44,13 +43,13 @@ const StyledLoader = styled.div`
       transform: translate(0, 0);
     }
     25% {
-      transform: translate(30px, 0);
+      transform: translate(55px, 0);
     }
     50% {
-      transform: translate(30px, 30px);
+      transform: translate(55px, 55px);
     }
     75% {
-      transform: translate(0, 30px);
+      transform: translate(0, 55px);
     }
     100% {
       transform: translate(0, 0);

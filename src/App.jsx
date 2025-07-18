@@ -21,6 +21,7 @@ import FirstAid from "./pages/firstAid/FirstAid";
 import { useEffect } from "react";
 import Loader from "./components/ui/Loader";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 function App() {
   // const lang = useSelector((state) => state.lang.language)
@@ -29,11 +30,20 @@ function App() {
     document.documentElement.setAttribute("lang", i18n.language);
   }, [i18n.language]);
 
-  // const { i18n: i18nextInstance } = useTranslation()
-  // const theme = useSelector((state) => state.theme);
   const direction = i18n.language === "ar" ? "rtl" : "ltr";
   const showLoader = useSelector((state) => state.loader.isLoading);
-
+  // useEffect(() => {
+  //   axios
+  //     .post("https://toxiqr.pythonanywhere.com/api/joinus", {
+  //       email: "mm@m.com",
+  //       name: "mm",
+  //       specialist: "mm",
+  //       country: "mm",
+  //       date: "2025-07-18",
+  //     })
+  //     .then((res) => console.log(res.data))
+  //     .catch((err) => console.log(err.response.data));
+  // }, []);
   return (
     <>
       <I18nextProvider i18n={i18n} />
@@ -46,7 +56,7 @@ function App() {
             <Route path="/" index element={<Home />} />
             <Route path="/press" element={<Press />} />
             <Route path="/blog" element={<OurBlog />} />
-            <Route path="/blog/:id" element={<Blog />} />
+            <Route path="/blog/:month/:year" element={<Blog />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/instructions" element={<Instructions />} />

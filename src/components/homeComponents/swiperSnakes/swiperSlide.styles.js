@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { SwiperSlide } from "swiper/react";
 
 export const SwiperSection = styled.section`
@@ -59,5 +59,57 @@ export const StyledSlide = styled(SwiperSlide)`
     height: 100%;
     content: "";
     background-color: rgba(0, 0, 0, 0.4);
+  }
+`;
+
+export const Box = styled.div`
+  width: 400px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20%;
+  right: ${({ theme }) => (theme.lang === "en" ? "5%" : "auto")};
+  left: ${({ theme }) => (theme.lang === "ar" ? "5%" : "auto")};
+  background-color: ${({ theme }) => theme.colors.backLight};
+  z-index: 1;
+  transition: opacity 1.5s;
+  border-radius: 8px;
+  ${({ $active }) =>
+    $active &&
+    css`
+      opacity: 1;
+    `}
+
+  ${({ $transitioning }) =>
+    $transitioning &&
+    css`
+      opacity: 0;
+    `}
+
+  > div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0px 20px;
+    > div {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    svg {
+      font-size: 80px;
+    }
+  }
+  .hr {
+    width: 100%;
+    height: 2px;
+    transform: translateY(2px);
+    background-color: black;
+    margin: 2px 0;
   }
 `;

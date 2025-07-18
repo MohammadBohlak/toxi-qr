@@ -15,8 +15,16 @@ import {
   StyledJoinUs,
 } from "./joinUs.styles";
 import { MainTitle, SubTitle } from "../../components/common/texts";
+import { api } from "../../utils/api/api";
 
+import countryDataEn from "../../assets/countryEn.json";
+import countryDataAr from "../../assets/countryAr.json";
+import { useSelector } from "react-redux";
+import axios from "axios";
 export default function JoinUsPage() {
+  const lang = useSelector((state) => state.lang.language);
+  const countryData = lang === "ar" ? countryDataAr : countryDataEn;
+
   const initialValues = {
     email: "",
     name: "",
@@ -34,7 +42,29 @@ export default function JoinUsPage() {
   });
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log("Form Values:", values);
+    const today = new Date();
+    const year = today.getFullYear(); // الحصول على السنة (مثل 2025)
+    const month = String(today.getMonth() + 1).padStart(2, "0"); // الحصول على الشهر (0-11، لذا نضيف 1) وتنسيقه
+    const day = String(today.getDate()).padStart(2, "0"); // الحصول على اليوم وتنسيقه
+    const formattedDate = `${year}-${month}-${day}`; // الصيغة: YYYY-MM-DD
+
+    console.log(formattedDate); // مثال الإخراج: 2025-07-18
+    axios
+      .post("https://toxiqr.pythonanywhere.com/api/joinus", {
+        email: "mm@m.com",
+        name: "mm",
+        specialist: "mm",
+        country: "mm",
+        date: "2025-07-18",
+      })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err.response.data)); // Display error message
+    console.log({
+      ...values,
+      country: countryData[values.country],
+      date: formattedDate,
+    });
+
     resetForm();
   };
 
