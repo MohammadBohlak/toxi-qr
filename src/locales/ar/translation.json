@@ -60,6 +60,12 @@
     "specialist": "علم البيئة والسموم البيئية",
     "country": "المملكة العربية السعودية"
   },
+  "ourBlog": {
+    "title": "مدونتنا",
+    "search": "ابحث",
+    "searchPlaceholder": "ابحث بالعنوان",
+    "searchNotFound": "لا يوجد نتائج"
+  },
   "press": {
     "title": "الصحافة",
     "subtitle": "ظهور ToxiQR في الإعلام",

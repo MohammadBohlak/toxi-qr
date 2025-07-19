@@ -2,16 +2,16 @@
 import { useEffect, useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
+
 import { api } from "../../utils/api/api";
+
 import MyContainer from "../../components/ui/myContainer/MyContainer";
 import { StyledSection } from "../../components/common/sections";
 import { MainTitle, SubTitle } from "../../components/common/texts";
-// ↓ import Outlet
-import { Outlet } from "react-router-dom";
+import Blogs from "../../components/ourBlogComponents/blogs/Blogs";
+import ArchiveSection from "../../components/ourBlogComponents/archiveSection/ArchiveSection";
 import { SkeletonTitle, StyledInputGroup } from "./ourBlog.styles";
 import { useTranslation } from "react-i18next";
-import ArchiveSection from "../../components/ourBlogComponents/archiveSection/ArchiveSection";
-import { ContentSceleton, SearchSkeleton } from "./ourBlogSkeleton";
 
 export default function OurBlog() {
   const ShowLoader = useSelector((state) => state.loader.isLoading);
@@ -20,6 +20,7 @@ export default function OurBlog() {
   const [blogs, setBlogs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
+  // جلب البيانات الأولى للمقالات
   useEffect(() => {
     api.get("/blogs").then((res) => {
       setAllBlogs(res.data);
@@ -27,12 +28,14 @@ export default function OurBlog() {
     });
   }, []);
 
+  // إذا تم مسح مربع البحث، أعد عرض جميع المقالات
   useEffect(() => {
     if (searchTerm.trim() === "") {
       setBlogs(allBlogs);
     }
   }, [searchTerm, allBlogs]);
 
+  // البحث عند الضغط على الزر أو Enter
   const handleSearch = () => {
     const term = searchTerm.trim().toLowerCase();
     if (!term) {
@@ -49,57 +52,42 @@ export default function OurBlog() {
     <StyledSection>
       <MyContainer>
         {ShowLoader ? (
-          <>
-            <SkeletonTitle className="skeleton" />
-          </>
+          <SkeletonTitle className="skeleton" />
         ) : (
-          <>
-            <MainTitle $align="initial" className="mb-4">
-              {t("ourBlog.title")}
-            </MainTitle>
-          </>
+          <MainTitle $align="initial" className="mb-4">
+            {t("ourBlog.title")}
+          </MainTitle>
         )}
 
         <Row className="justify-content-between m-0">
           <Col md={8}>
-            {ShowLoader ? (
-              <>
-                <SearchSkeleton className="mt-4 ">
-                  <ContentSceleton
-                    style={{ width: "85%" }}
-                    className="skeleton"
-                  />
-                  <ContentSceleton
-                    style={{ width: "14%" }}
-                    className="skeleton"
-                  />
-                </SearchSkeleton>
-              </>
+            {/* مربع البحث */}
+            <StyledInputGroup className="mb-4">
+              <Form.Control
+                placeholder={t("ourBlog.searchPlaceholder")}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    handleSearch();
+                  }
+                }}
+              />
+
+              <Button onClick={handleSearch}>{t("ourBlog.search")}</Button>
+            </StyledInputGroup>
+          </Col>
+          <Col md={8}>
+            {blogs.length > 0 ? (
+              <Blogs blogs={blogs} />
             ) : (
-              <>
-                <StyledInputGroup className="mb-4">
-                  <Form.Control
-                    placeholder={t("ourBlog.searchPlaceholder")}
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        e.preventDefault();
-                        handleSearch();
-                      }
-                    }}
-                  />
-                  <Button onClick={handleSearch}>{t("ourBlog.search")}</Button>
-                </StyledInputGroup>
-              </>
+              <SubTitle>
+                {t("ourBlog.searchNotFound")}
+                {/* {searchTerm && ` for "${searchTerm}"`} */}
+              </SubTitle>
             )}
           </Col>
-
-          {/* ← this column is now your outlet */}
-          <Col md={8}>
-            <Outlet context={{ allBlogs, blogs, setBlogs }} />
-          </Col>
-
           <Col md={3}>
             <ArchiveSection
               blogs={blogs}

@@ -60,6 +60,12 @@
     "specialist": "Ecology and Ecotoxicology ",
     "country": "Saudi Arabia"
   },
+  "ourBlog": {
+    "title": "Our blog",
+    "search": "Search",
+    "searchPlaceholder": "Search by title",
+    "searchNotFound": "No results found"
+  },
   "press": {
     "title": "Press",
     "subtitle": "ToxiQR in the news",

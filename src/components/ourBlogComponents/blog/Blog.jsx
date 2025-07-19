@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { blogPosts } from "../../../pages/ourBlog/data.js";
 import Blogs from "../blogs/Blogs.jsx";
 import MyContainer from "../../ui/myContainer/MyContainer.jsx";
 import { StyledSection } from "../../common/sections.js";
@@ -8,17 +7,23 @@ import { api } from "../../../utils/api/api.js";
 
 const Blog = () => {
   const [blog, setBlog] = useState([]);
-  const { month, year } = useParams();
+  const { id, month, year } = useParams();
   useEffect(() => {
-    api.get(`/blogs/?month=${month}&year=${year}&search=Toxiqr`).then((res) => {
-      setBlog(res.data);
-    });
+    if (id) {
+      api.get(`/blogs/${id}`).then((res) => {
+        setBlog([res.data]);
+      });
+    } else if (month && year) {
+      api.get(`/blogs?month=${month}&year=${year}`).then((res) => {
+        setBlog(res.data);
+      });
+    }
   }, []);
 
   return (
     <StyledSection>
       <MyContainer>
-        <Blogs blogs={blog} isOneBlog={true} />
+        <Blogs blogs={blog} isOneBlog={id} />
       </MyContainer>
     </StyledSection>
   );
