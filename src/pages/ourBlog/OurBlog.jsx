@@ -7,8 +7,18 @@ import Blogs from "../../components/ourBlogComponents/blogs/Blogs";
 import { StyledSection } from "../../components/common/sections";
 import { useEffect, useState } from "react";
 import { api } from "../../utils/api/api";
+import styled from "styled-components";
+import { useSelector } from "react-redux";
 
+const SkeletonTitle = styled.div`
+  width: 200px;
+  height: 40px;
+  border-radius: 8px;
+`;
 const OurBlog = () => {
+  const ShowLoader = useSelector((state) => state.loader.isLoading);
+  console.log(ShowLoader);
+
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     api.get("/blogs").then((res) => {
@@ -21,9 +31,13 @@ const OurBlog = () => {
     <>
       <StyledSection>
         <MyContainer>
-          <MainTitle $align="initial" className="mb-5">
-            Our Blog
-          </MainTitle>
+          {ShowLoader ? (
+            <SkeletonTitle className="skeleton" />
+          ) : (
+            <MainTitle $align="initial" className="mb-5">
+              Our Blog
+            </MainTitle>
+          )}
           <Row className="justify-content-between m-0">
             <Col md={8}>
               <Blogs blogs={blogs} />

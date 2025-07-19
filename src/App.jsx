@@ -10,7 +10,6 @@ import { Route, Routes } from "react-router-dom";
 import Press from "./pages/press/Press";
 import OurBlog from "./pages/ourBlog/OurBlog";
 import Blog from "./components/ourBlogComponents/blog/Blog";
-import Detection from "./pages/Detection/DetectionPage";
 import Footer from "./components/ui/footer/Footer";
 import Privacy from "./pages/privacy/Privacy";
 import Terms from "./pages/terms/Terms";
@@ -21,7 +20,6 @@ import FirstAid from "./pages/firstAid/FirstAid";
 import { useEffect } from "react";
 import Loader from "./components/ui/Loader";
 import { useSelector } from "react-redux";
-import axios from "axios";
 
 function App() {
   // const lang = useSelector((state) => state.lang.language)

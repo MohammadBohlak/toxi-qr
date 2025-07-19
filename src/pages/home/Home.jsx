@@ -12,8 +12,6 @@ import Features from "../../components/homeComponents/features/Features";
 import Devices from "../../components/homeComponents/devices/Devices";
 import SwiperExperts from "../../components/swiperExperts/SwiperExperts";
 import DetectionPage from "../Detection/DetectionPage";
-import Footer from "../../components/ui/footer/Footer";
-import SkeletonHome from "./SkeletonHome";
 import { useSelector } from "react-redux";
 
 const StyledHome = styled.section`
