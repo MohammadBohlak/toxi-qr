@@ -21,12 +21,23 @@ export const IconWrapper = styled.span`
 export const RowGroup = styled.div`
   display: flex;
   align-items: center;
-  input {
+  input,
+  select {
     border: 2px solid #eee;
   }
-  input:focus {
+  input:focus,
+  select:focus {
     box-shadow: none;
     border: 2px solid ${({ theme }) => theme.colors.primary};
+  }
+  input:-internal-autofill-selected {
+    appearance: menulist-button;
+    background-image: none !important;
+    background-color: light-dark(
+      rgba(232, 240, 254, 0),
+      rgba(70, 90, 126, 0)
+    ) !important;
+    color: fieldtext !important;
   }
 `;
 

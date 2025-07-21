@@ -11,9 +11,7 @@ const StyledPrivacy = styled.section`
   display: flex;
   flex-direction: column;
   row-gap: 30px;
-  li::marker {
-    font-size: var(--normal-text);
-  }
+
   li {
     margin: 20px 0;
   }
@@ -22,12 +20,6 @@ const StyledPrivacy = styled.section`
   }
   ol li ol li .title {
     margin-bottom: 20px;
-  }
-  li ol {
-    margin-left: 30px;
-    margin-right: 30px;
-  }
-  li ol {
   }
 `;
 
@@ -172,12 +164,7 @@ export default function Privacy() {
               <Text>
                 <div>{t("privacy.yourRights.desc")}</div>
                 {yourRightsPoints.map((pt, i) => (
-                  <div key={i}>
-                    {pt}
-                    {i === yourRightsPoints.length - 1 && (
-                      <a href="mailto:support@toxiqr.com">support@toxiqr.com</a>
-                    )}
-                  </div>
+                  <div key={i}>{pt}</div>
                 ))}
               </Text>
             </li>

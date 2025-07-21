@@ -3,10 +3,10 @@
 import React from "react";
 import { Container, Form } from "react-bootstrap";
 import {
-  FiMail,
   FiUser,
-  FiBriefcase,
+  FiMail,
   FiUser as FiPrefix,
+  FiBriefcase,
 } from "react-icons/fi";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -19,17 +19,11 @@ import {
   StyledControl,
   StyledJoinUs,
 } from "./joinUs.styles";
+import { MainTitle } from "../../components/common/texts";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import countryDataEn from "../../assets/countryEn.json";
 import countryDataAr from "../../assets/countryAr.json";
-import styled from "styled-components";
-
-// StyledSelect يعتمد Form.Select ويقبل isInvalid
-const StyledSelect = styled(Form.Select)`
-  flex: 1;
-  font-size: var(--normal-text);
-`;
 
 export default function JoinUsPage() {
   const lang = useSelector((state) => state.lang.language);
@@ -53,28 +47,32 @@ export default function JoinUsPage() {
     country: Yup.string().required("Country is required"),
   });
 
-  const handleSubmit = async (values, { resetForm }) => {
-    const date = new Date().toISOString().slice(0, 10);
-    // try {
-    //   await axios.post("https://toxiqr.pythonanywhere.com/api/joinus", {
+  const handleSubmit = (values, { resetForm }) => {
+    const today = new Date();
+    const formattedDate = today.toISOString().slice(0, 10);
+
+    // axios
+    //   .post("https://toxiqr.pythonanywhere.com/api/joinus", {
     //     prefix: values.prefix,
     //     email: values.email,
     //     name: values.name,
     //     specialist: values.specialist,
     //     country: countryData[values.country],
-    //     date,
-    //   });
-    //   resetForm();
-    // } catch (e) {
-    //   console.error(e.response?.data || e);
-    // }
-    console.log({ ...values, date });
+    //     date: formattedDate,
+    //   })
+    //   .then((res) => console.log(res.data))
+    //   .catch((err) => console.log(err.response.data));
+
+    console.log({ ...values, date: formattedDate });
+    resetForm();
   };
 
   return (
     <StyledJoinUs>
       <Container style={{ maxWidth: 500, margin: "2rem auto" }}>
-        <h2 style={{ textAlign: "center", marginBottom: "1.5rem" }}>Join Us</h2>
+        <MainTitle style={{ textAlign: "center", marginBottom: "1.5rem" }}>
+          Join Us
+        </MainTitle>
 
         <Formik
           initialValues={initialValues}
@@ -91,13 +89,14 @@ export default function JoinUsPage() {
             setFieldValue,
           }) => (
             <Form noValidate onSubmit={handleSubmit}>
-              {/* Prefix */}
+              {/* Prefix Select */}
               <Form.Group controlId="formPrefix" className="mb-3">
                 <RowGroup>
                   <IconWrapper>
                     <FiPrefix />
                   </IconWrapper>
-                  <StyledSelect
+                  <StyledControl
+                    as="select"
                     name="prefix"
                     value={values.prefix}
                     onChange={handleChange}
@@ -108,14 +107,16 @@ export default function JoinUsPage() {
                     <option value="Mr">Mr</option>
                     <option value="Dr">Dr</option>
                     <option value="Prof">Prof</option>
-                  </StyledSelect>
+                  </StyledControl>
                 </RowGroup>
-                <Form.Control.Feedback
-                  type="invalid"
-                  style={{ display: "block" }}
-                >
-                  {touched.prefix && errors.prefix}
-                </Form.Control.Feedback>
+                {touched.prefix && errors.prefix && (
+                  <Form.Control.Feedback
+                    type="invalid"
+                    style={{ display: "block" }}
+                  >
+                    {errors.prefix}
+                  </Form.Control.Feedback>
+                )}
               </Form.Group>
 
               {/* Email */}
@@ -134,12 +135,14 @@ export default function JoinUsPage() {
                     isInvalid={touched.email && !!errors.email}
                   />
                 </RowGroup>
-                <Form.Control.Feedback
-                  type="invalid"
-                  style={{ display: "block" }}
-                >
-                  {touched.email && errors.email}
-                </Form.Control.Feedback>
+                {touched.email && errors.email && (
+                  <Form.Control.Feedback
+                    type="invalid"
+                    style={{ display: "block" }}
+                  >
+                    {errors.email}
+                  </Form.Control.Feedback>
+                )}
               </Form.Group>
 
               {/* Name */}
@@ -158,12 +161,14 @@ export default function JoinUsPage() {
                     isInvalid={touched.name && !!errors.name}
                   />
                 </RowGroup>
-                <Form.Control.Feedback
-                  type="invalid"
-                  style={{ display: "block" }}
-                >
-                  {touched.name && errors.name}
-                </Form.Control.Feedback>
+                {touched.name && errors.name && (
+                  <Form.Control.Feedback
+                    type="invalid"
+                    style={{ display: "block" }}
+                  >
+                    {errors.name}
+                  </Form.Control.Feedback>
+                )}
               </Form.Group>
 
               {/* Specialist */}
@@ -182,12 +187,14 @@ export default function JoinUsPage() {
                     isInvalid={touched.specialist && !!errors.specialist}
                   />
                 </RowGroup>
-                <Form.Control.Feedback
-                  type="invalid"
-                  style={{ display: "block" }}
-                >
-                  {touched.specialist && errors.specialist}
-                </Form.Control.Feedback>
+                {touched.specialist && errors.specialist && (
+                  <Form.Control.Feedback
+                    type="invalid"
+                    style={{ display: "block" }}
+                  >
+                    {errors.specialist}
+                  </Form.Control.Feedback>
+                )}
               </Form.Group>
 
               {/* Country */}
@@ -201,12 +208,17 @@ export default function JoinUsPage() {
                     />
                   </CountryWrapper>
                 </RowGroup>
-                <div className="invalid-feedback" style={{ display: "block" }}>
-                  {touched.country && errors.country}
-                </div>
+                {touched.country && errors.country && (
+                  <div
+                    className="invalid-feedback"
+                    style={{ display: "block" }}
+                  >
+                    {errors.country}
+                  </div>
+                )}
               </Form.Group>
 
-              {/* Send */}
+              {/* Send Button */}
               <div className="d-flex justify-content-center mt-5">
                 <SendButton type="submit">Send</SendButton>
               </div>

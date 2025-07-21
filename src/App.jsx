@@ -9,7 +9,6 @@ import Home from "./pages/home/Home";
 import { Route, Routes } from "react-router-dom";
 import Press from "./pages/press/Press";
 import OurBlog from "./pages/ourBlog/OurBlog";
-import Blog from "./components/ourBlogComponents/blog/Blog";
 import Footer from "./components/ui/footer/Footer";
 import Privacy from "./pages/privacy/Privacy";
 import Terms from "./pages/terms/Terms";
@@ -56,9 +55,6 @@ function App() {
           <Routes>
             <Route path="/" index element={<Home />} />
             <Route path="/press" element={<Press />} />
-            {/* <Route path="/blog" element={<OurBlog />} /> */}
-            {/* <Route path="/blog/:id" element={<Blog />} /> */}
-            {/* <Route path="/blog/:month/:year" element={<Blog />} /> */}
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/instructions" element={<Instructions />} />

@@ -91,6 +91,10 @@ export const DownloadBtn = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: translateY(-10px);
+  }
   img {
     max-width: 140px;
     height: auto;

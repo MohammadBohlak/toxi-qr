@@ -3,24 +3,20 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 
 import logoImg from "../../../assets/images/logo.png";
 import googlePlayImg from "../../../assets/images/google-play.png";
 import appStoreImg from "../../../assets/images/app-store.png";
 import MyContainer from "../myContainer/MyContainer";
-import { StyledSection } from "../../common/sections";
 import { SmallText, Text } from "../../common/texts";
 import logoTwittter from "../../../assets/images/logoX.webp";
 import {
   BottomBar,
   DownloadBtn,
   DownloadButtons,
-  FooterContent,
   FooterLink,
   Icons,
   Links,
-  // Logo,
   NavList,
   SocialIcon,
   StyledFooter,
@@ -69,29 +65,6 @@ const Footer = () => {
               </li>
             </NavList>
           </Links>
-
-          {/* <Col sm={12} md={4} lg={2}>
-            <NavList>
-              <li>
-                <Text>
-                  <FooterLink to="/press">{t("footer.nav2.press")}</FooterLink>
-                </Text>
-              </li>
-              <li>
-                <Text>
-                  <FooterLink to="/blog">{t("footer.nav2.blog")}</FooterLink>
-                </Text>
-              </li>
-              <li>
-                <Text>
-                  <FooterLink to="/instructions">
-                    {t("footer.nav2.instructions")}
-                  </FooterLink>
-                </Text>
-              </li>
-            </NavList>
-          </Col> */}
-
           <Icons sm={12} md={4} lg={3} className="icons">
             <SocialIcon
               href="https://facebook.com"

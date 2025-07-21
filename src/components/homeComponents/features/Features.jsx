@@ -1,22 +1,23 @@
-import React from "react";
-import { CiBullhorn } from "react-icons/ci";
-import { FaCcDiscover, FaUserSecret } from "react-icons/fa";
-import { MdOutlineGroups2 } from "react-icons/md";
-import { GiHoneycomb } from "react-icons/gi";
-import { BiClipboard } from "react-icons/bi";
+import { FaBed, FaHandPaper } from "react-icons/fa";
+import { FaHandHolding } from "react-icons/fa";
+import { FaAmbulance } from "react-icons/fa";
+import { BsFillBandaidFill } from "react-icons/bs";
 import MyContainer from "../../ui/myContainer/MyContainer";
 import { Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { MainTitle, SubTitle, Text } from "../../common/texts";
 import { BoxFeatures, FeatureIcon, StyledFeature } from "./features.styles";
-
+import noSugar from "../../../assets/no-sugar-icon.svg";
 const featuresList = [
-  { icon: <BiClipboard />, key: "continueTracking" },
-  { icon: <GiHoneycomb />, key: "createUsefulData" },
-  { icon: <MdOutlineGroups2 />, key: "collectiveIdentification" },
-  { icon: <FaUserSecret />, key: "beCitizenScientist" },
-  { icon: <FaCcDiscover />, key: "discoverNature" },
-  { icon: <CiBullhorn />, key: "fuelDiversity" },
+  { icon: <FaAmbulance />, key: "callEmergency" },
+  { icon: <FaHandHolding />, key: "cleanBite" },
+  {
+    icon: <img className="no-sugar" src={noSugar} alt="no sugar icon" />,
+    key: "avoidIce",
+  },
+  { icon: <FaBed />, key: "immobilize" },
+  { icon: <FaHandPaper />, key: "removeTightItems" },
+  { icon: <BsFillBandaidFill />, key: "coverBite" },
 ];
 
 const Features = () => {

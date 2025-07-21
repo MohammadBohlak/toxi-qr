@@ -1,20 +1,17 @@
 // src/pages/OurBlog.jsx
 import { useEffect, useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
-import { useSelector } from "react-redux";
 import { api } from "../../utils/api/api";
 import MyContainer from "../../components/ui/myContainer/MyContainer";
 import { StyledSection } from "../../components/common/sections";
-import { MainTitle, SubTitle } from "../../components/common/texts";
+import { MainTitle } from "../../components/common/texts";
 // ↓ import Outlet
 import { Outlet } from "react-router-dom";
-import { SkeletonTitle, StyledInputGroup } from "./ourBlog.styles";
+import { StyledInputGroup } from "./ourBlog.styles";
 import { useTranslation } from "react-i18next";
 import ArchiveSection from "../../components/ourBlogComponents/archiveSection/ArchiveSection";
-import { ContentSceleton, SearchSkeleton } from "./ourBlogSkeleton";
 
 export default function OurBlog() {
-  const ShowLoader = useSelector((state) => state.loader.isLoading);
   const { t } = useTranslation();
   const [allBlogs, setAllBlogs] = useState([]);
   const [blogs, setBlogs] = useState([]);
@@ -48,51 +45,26 @@ export default function OurBlog() {
   return (
     <StyledSection>
       <MyContainer>
-        {ShowLoader ? (
-          <>
-            <SkeletonTitle className="skeleton" />
-          </>
-        ) : (
-          <>
-            <MainTitle $align="initial" className="mb-4">
-              {t("ourBlog.title")}
-            </MainTitle>
-          </>
-        )}
+        <MainTitle $align="initial" className="mb-4">
+          {t("ourBlog.title")}
+        </MainTitle>
 
         <Row className="justify-content-between m-0">
           <Col md={8}>
-            {ShowLoader ? (
-              <>
-                <SearchSkeleton className="mt-4 ">
-                  <ContentSceleton
-                    style={{ width: "85%" }}
-                    className="skeleton"
-                  />
-                  <ContentSceleton
-                    style={{ width: "14%" }}
-                    className="skeleton"
-                  />
-                </SearchSkeleton>
-              </>
-            ) : (
-              <>
-                <StyledInputGroup className="mb-4">
-                  <Form.Control
-                    placeholder={t("ourBlog.searchPlaceholder")}
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        e.preventDefault();
-                        handleSearch();
-                      }
-                    }}
-                  />
-                  <Button onClick={handleSearch}>{t("ourBlog.search")}</Button>
-                </StyledInputGroup>
-              </>
-            )}
+            <StyledInputGroup className="mb-4">
+              <Form.Control
+                placeholder={t("ourBlog.searchPlaceholder")}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    handleSearch();
+                  }
+                }}
+              />
+              <Button onClick={handleSearch}>{t("ourBlog.search")}</Button>
+            </StyledInputGroup>
           </Col>
 
           {/* ← this column is now your outlet */}
@@ -101,11 +73,7 @@ export default function OurBlog() {
           </Col>
 
           <Col md={3}>
-            <ArchiveSection
-              blogs={blogs}
-              setAllBlogs={setAllBlogs}
-              setBlogs={setBlogs}
-            />
+            <ArchiveSection />
           </Col>
         </Row>
       </MyContainer>

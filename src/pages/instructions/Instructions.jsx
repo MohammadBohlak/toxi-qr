@@ -1,41 +1,88 @@
-import React from "react";
-import { MainTitle, Text } from "../../components/common/texts";
+// src/pages/Instructions.jsx
+
 import { useTranslation } from "react-i18next";
+import { FiCheckCircle } from "react-icons/fi";
 import styled from "styled-components";
 import MyContainer from "../../components/ui/myContainer/MyContainer";
 import { StyledSection } from "../../components/common/sections";
+import { MainTitle } from "../../components/common/texts";
 
-const StyledInsrtuctions = styled.section`
-  ul li {
-    margin: 20px 30px 0 30px;
+const GlassSection = styled(StyledSection)`
+  /* خلفية متدرجة */
+  background: radial-gradient(
+    circle at top left,
+    ${({ theme }) => theme.colors.backLight},
+    ${({ theme }) => theme.colors.primary}
+  );
+  padding: 4rem 0;
+`;
+
+const Grid = styled.div`
+  display: grid;
+  gap: 1.5rem;
+  /* بطاقات جيّدة من 1 عمود إلى 3 أعمدة */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+`;
+
+const GlassCard = styled.div`
+  position: relative;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px); /* تأثير زجاجي */
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  padding: 1.75rem;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const IconWrapper = styled.div`
+  width: 40px;
+  height: 40px;
+  background: ${({ theme }) => theme.colors.primary};
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1rem;
+
+  svg {
+    color: #fff;
+    font-size: 20px;
   }
 `;
-const Instructions = () => {
-  const { t } = useTranslation();
-  return (
-    <StyledInsrtuctions>
-      <MyContainer>
-        <StyledSection>
-          <MainTitle style={{ marginBottom: "10px" }} $align={"initial"}>
-            {t("instructions.title")}
-          </MainTitle>
-          <Text>
-            <ul>
-              <li>{t("instructions.i1")}</li>
-              <li>{t("instructions.i2")}</li>
-              <li>{t("instructions.i3")}</li>
-              <li>{t("instructions.i4")}</li>
-              <li>{t("instructions.i5")}</li>
-              <li>{t("instructions.i6")}</li>
-              <li>{t("instructions.i7")}</li>
-              <li>{t("instructions.i8")}</li>
-              <li>{t("instructions.i9")}</li>
-            </ul>
-          </Text>
-        </StyledSection>
-      </MyContainer>
-    </StyledInsrtuctions>
-  );
-};
 
-export default Instructions;
+const InstructionText = styled.p`
+  margin: 0;
+  font-size: var(--small-text);
+  line-height: 1.6;
+  color: ${({ theme }) => theme.colors.text};
+  flex: 1;
+`;
+
+export default function Instructions() {
+  const { t } = useTranslation();
+  const items = Array.from({ length: 9 }, (_, i) =>
+    t(`instructions.i${i + 1}`)
+  );
+
+  return (
+    <GlassSection>
+      <MyContainer>
+        <MainTitle style={{ textAlign: "center", marginBottom: "2rem" }}>
+          {t("instructions.title")}
+        </MainTitle>
+
+        <Grid>
+          {items.map((text, idx) => (
+            <GlassCard key={idx}>
+              <IconWrapper>
+                <FiCheckCircle />
+              </IconWrapper>
+              <InstructionText>{text}</InstructionText>
+            </GlassCard>
+          ))}
+        </Grid>
+      </MyContainer>
+    </GlassSection>
+  );
+}

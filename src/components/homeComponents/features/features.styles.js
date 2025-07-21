@@ -25,4 +25,8 @@ export const FeatureIcon = styled.div`
     color: ${({ theme }) => theme.colors.primary};
     margin-right: 10px;
   }
+  .no-sugar {
+    width: 80px;
+    height: 80px;
+  }
 `;

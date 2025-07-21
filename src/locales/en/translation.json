@@ -19,30 +19,30 @@
     "description": "Every photo or observation you record of a snake whether found in the wild or near homes can greatly enhance our understanding of snake species and help determine their level of venomousness. Through our website, we analyze your sightings with precision to assess whether the snake is venomous, and we share this data with global biodiversity repositories to assist scientists and wildlife experts. A single photo from you could make a difference and help keep others safe."
   },
   "features": {
-    "title": "Nature at Your Fingertips",
-    "continueTracking": {
-      "title": "Keep Observing Snakes",
-      "description": "Submit your snake sightings to help build a global understanding of their distribution and behavior."
+    "title": "First Aid for Snake and Spider Bites",
+    "callEmergency": {
+      "title": "Call Emergency Services",
+      "description": "Call emergency services immediately and stay calm. Try to identify or describe the snake or spider if possible, to assist in treatment."
     },
-    "createUsefulData": {
-      "title": "Generate Valuable Snake Data",
-      "description": "Every photo helps experts detect venomous species and study snake habitats more effectively."
+    "cleanBite": {
+      "title": "Clean the bite area",
+      "description": ". Clean the bite area gently with soap and water. Do not cut the wound or attempt to suck out the venom."
     },
-    "collectiveIdentification": {
-      "title": "Crowdsource Identification",
-      "description": "Let the community and specialists help identify the type of snake you've encountered."
+    "avoidIce": {
+      "title": "Do not apply ice",
+      "description": "Do not apply ice or immerse the bite area in water. Avoid using tight bandages or tourniquets."
     },
-    "beCitizenScientist": {
-      "title": "Be a Snake Safety Advocate",
-      "description": "Join scientific efforts to map venomous snakes and keep your community informed and protected."
+    "immobilize": {
+      "title": "Keep the victim lying down or seated",
+      "description": "Keep the victim lying down or seated, and elevate the affected limb if possible. Minimize movement and ensure comfort."
     },
-    "discoverNature": {
-      "title": "Discover Snake Diversity",
-      "description": "Learn about the many snake species in your region and how to safely interact with wildlife."
+    "removeTightItems": {
+      "title": "Remove any tight items",
+      "description": "Remove any tight items (rings, bracelets, etc.) from the bitten area to prevent skin damage due to swelling."
     },
-    "fuelDiversity": {
-      "title": "Support Biodiversity Monitoring",
-      "description": "Your observations contribute to global snake research and help preserve ecological balance."
+    "coverBite": {
+      "title": "Cover the bite with a clean, dry dressing",
+      "description": "Cover the bite with a clean, dry dressing. For spider bites, cold compresses may be used to reduce swelling"
     }
   },
   "devices": {
@@ -188,5 +188,88 @@
       "instructions": "Instructions"
     },
     "copyright": "© {{year}} ToxiQR. All rights reserved."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "intro": "At ToxiQR (<a href=\"https://www.ToxiQR.org\">www.ToxiQR.org</a>), we value your privacy and want to keep your personal data secure. This Privacy Policy is designed to describe how we collect, use, store, and disclose your data when you visit or use our website or mobile app. By visiting or using ToxiQR, you agree to the terms of this Privacy Policy.",
+    "informationCollect": {
+      "title": "Information We Collect",
+      "imageUploads": {
+        "title": "Image Uploads",
+        "desc": "By sending photos to ToxiQR for AI scanning, we receive the photos and hold them on a temporary basis to scan and identify the presence of poisonous or harmless species. You grant us permission to use the photo for:",
+        "points": [
+          "AI detection and in-house testing",
+          "Scientific research and public awareness campaigns",
+          "Education blogs or published news on wildlife identification and safety",
+          "We take care that no identifying personal information (e.g., names, geolocation data) is associated with images published in any public or scientific environment."
+        ]
+      },
+      "contactDetails": {
+        "title": "Contact Details",
+        "desc": "If you request professional confirmation or wish to be notified, we may retain your e-mail address or other contact information for the exclusive purpose of communicating results or information related to your inquiry."
+      },
+      "technicalUsageData": {
+        "title": "Technical and Usage Data",
+        "desc": "We are able to collect non-personal data like IP address, browser type, device information, accessed pages, time on site, and referring URLs. We use this data in tracking the performance of websites, improving user experience, and determining unauthorized misuse or abuse."
+      }
+    },
+    "useYourInformation": {
+      "title": "How We Use Your Information",
+      "points": [
+        "For providing accurate species identification using our AI facilities",
+        "For answering user queries and expert verification requests",
+        "For improving the functionality and security of our platform",
+        "For conducting scientific research or posting content for learning and knowledge reasons"
+      ]
+    },
+    "legalBasis": {
+      "title": "Legal Basis for Processing",
+      "desc": "We process your information based on one or more of the following legal basis:",
+      "points": [
+        "Your consent (e.g., sending photos, requesting us to confirm)",
+        "Legitimate interests in improving our services and promoting public knowledge",
+        "Being required by law"
+      ]
+    },
+    "disclosure": {
+      "title": "Disclosure and Sharing of Data",
+      "desc": "ToxiQR does not sell or rent out your personal data to other parties. We might disclose your data:",
+      "points": [
+        "To service providers assisting in website operation (under strict confidentiality agreements)",
+        "When required by law or to respond to lawful requests from public authorities",
+        "To protect the rights, property, or safety of ToxiQR, our users, or others"
+      ]
+    },
+    "dataRetention": {
+      "title": "Data Retention",
+      "desc": "Uploaded images and associated data are retained only as long as necessary for the purposes outlined in this policy. Irrelevant or unused data may be deleted periodically."
+    },
+    "yourRights": {
+      "title": "Your Rights",
+      "desc": "Depending on where you are, you may be entitled to:",
+      "points": [
+        "Have access to the personal data we retain about you",
+        "Have your information corrected or removed",
+        "Object or restrict specific processing activities",
+        "Withdraw consent at any time (without affecting any prior processing)",
+        "To exercise any of these, please contact us on:"
+      ]
+    },
+    "dataSecurity": {
+      "title": "Data Security",
+      "desc": "We take the proper technical and organizational measures to protect your data. There is no way that is 100% secure, but we aim to keep your information safe from unauthorized access, modification, disclosure, or destruction."
+    },
+    "childPrivacy": {
+      "title": "Children's Privacy",
+      "desc": "ToxiQR is not designed for kids under 13 years old. We don't knowingly collect information from kids. If we find this type of information has been collected, we will delete it immediately."
+    },
+    "policyChanges": {
+      "title": "Changes to This Privacy Policy",
+      "desc": "We may change this Privacy Policy at any time. We encourage the users to visit this page often. Continued use of ToxiQR after changes will be deemed to be your consent to the new policy."
+    },
+    "contactUs": {
+      "title": "Contact Us",
+      "desc": "If you have any questions or concerns about this Privacy Policy, please contact us: Email: <a href=\"mailto:support@toxiqr.com\">support@toxiqr.com</a>"
+    }
   }
 }

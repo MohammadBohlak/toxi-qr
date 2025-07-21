@@ -10,11 +10,10 @@ import { StyledSection } from "../../components/common/sections";
 import { MainTitle, SubTitle } from "../../components/common/texts";
 import Blogs from "../../components/ourBlogComponents/blogs/Blogs";
 import ArchiveSection from "../../components/ourBlogComponents/archiveSection/ArchiveSection";
-import { SkeletonTitle, StyledInputGroup } from "./ourBlog.styles";
+import { StyledInputGroup } from "./ourBlog.styles";
 import { useTranslation } from "react-i18next";
 
 export default function OurBlog() {
-  const ShowLoader = useSelector((state) => state.loader.isLoading);
   const { t } = useTranslation();
   const [allBlogs, setAllBlogs] = useState([]);
   const [blogs, setBlogs] = useState([]);
@@ -51,14 +50,9 @@ export default function OurBlog() {
   return (
     <StyledSection>
       <MyContainer>
-        {ShowLoader ? (
-          <SkeletonTitle className="skeleton" />
-        ) : (
-          <MainTitle $align="initial" className="mb-4">
-            {t("ourBlog.title")}
-          </MainTitle>
-        )}
-
+        <MainTitle $align="initial" className="mb-4">
+          {t("ourBlog.title")}
+        </MainTitle>
         <Row className="justify-content-between m-0">
           <Col md={8}>
             {/* مربع البحث */}
