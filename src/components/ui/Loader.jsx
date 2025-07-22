@@ -1,9 +1,7 @@
 // src/components/Loader/Loader.jsx
 
-import React from "react";
 import styled from "styled-components";
-import Logo from "../common/Logo";
-
+import logo from "../../assets/images/logo.png";
 const StyledLoader = styled.div`
   position: fixed;
   z-index: 9999;
@@ -11,6 +9,22 @@ const StyledLoader = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   > div {
+    width: 150px;
+    img {
+      max-width: 100%;
+    }
+    @keyframes rotate {
+      from {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+  }
+  animation: rotate 1.5s ease-in-out infinite;
+
+  /* > div {
     @keyframes spin {
       0% {
         opacity: 0;
@@ -24,20 +38,16 @@ const StyledLoader = styled.div`
         opacity: 0;
         transform: translate(-50%, -50%) scale(0.8);
       }
-    }
-  }
+    } */
+  /* } */
 
-  animation: spin 1.5s linear infinite;
-`;
-
-const AnimatedLogo = styled(Logo)`
-  width: 100px;
+  /* animation: spin 1.5s linear infinite; */
 `;
 
 const Loader = () => (
   <StyledLoader>
     <div>
-      <AnimatedLogo />
+      <img src={logo} alt="logo" />
     </div>
   </StyledLoader>
 );

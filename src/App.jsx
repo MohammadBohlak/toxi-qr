@@ -71,7 +71,7 @@ function App() {
               <Route path=":month/:year" element={<MonthYearBlogs />} />
             </Route>
           </Routes>
-          <Footer />
+          {!showLoader && <Footer />}
         </ThemeProvider>
       </div>
     </>

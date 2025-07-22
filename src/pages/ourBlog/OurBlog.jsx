@@ -10,6 +10,7 @@ import { Outlet } from "react-router-dom";
 import { StyledInputGroup } from "./ourBlog.styles";
 import { useTranslation } from "react-i18next";
 import ArchiveSection from "../../components/ourBlogComponents/archiveSection/ArchiveSection";
+import { useSelector } from "react-redux";
 
 export default function OurBlog() {
   const { t } = useTranslation();
@@ -42,34 +43,43 @@ export default function OurBlog() {
     setBlogs(filtered);
   };
 
+  const showLoader = useSelector((state) => state.loader.isLoading);
   return (
     <StyledSection>
       <MyContainer>
-        <MainTitle $align="initial" className="mb-4">
-          {t("ourBlog.title")}
-        </MainTitle>
-
         <Row className="justify-content-between m-0">
-          <Col md={8}>
-            <StyledInputGroup className="mb-4">
-              <Form.Control
-                placeholder={t("ourBlog.searchPlaceholder")}
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    e.preventDefault();
-                    handleSearch();
-                  }
-                }}
-              />
-              <Button onClick={handleSearch}>{t("ourBlog.search")}</Button>
-            </StyledInputGroup>
-          </Col>
+          {!showLoader ? (
+            <>
+              <Col md={8} className="p-0">
+                <MainTitle $align="initial" className="mb-4">
+                  {t("ourBlog.title")}
+                </MainTitle>
+              </Col>
+
+              <Col md={8}>
+                <StyledInputGroup className="mb-4">
+                  <Form.Control
+                    placeholder={t("ourBlog.searchPlaceholder")}
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        handleSearch();
+                      }
+                    }}
+                  />
+                  <Button onClick={handleSearch}>{t("ourBlog.search")}</Button>
+                </StyledInputGroup>
+              </Col>
+            </>
+          ) : (
+            <div style={{ minHeight: "500px" }}></div>
+          )}
 
           {/* ← this column is now your outlet */}
           <Col md={8}>
-            <Outlet context={{ allBlogs, blogs, setBlogs }} />
+            {!showLoader && <Outlet context={{ allBlogs, blogs, setBlogs }} />}
           </Col>
 
           <Col md={3}>

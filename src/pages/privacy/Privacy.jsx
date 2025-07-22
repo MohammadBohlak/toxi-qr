@@ -12,7 +12,7 @@ const StyledPrivacy = styled.section`
   flex-direction: column;
   row-gap: 30px;
   li::marker {
-    font-size: var(--normal-text);
+    /* font-size: var(--normal-text) !important; */
   }
   li {
     margin: 20px 0;
@@ -65,6 +65,7 @@ export default function Privacy() {
             />
           </div>
 
+          {/* <SubTitle> */}
           <ol>
             {/* 1. Information We Collect */}
             <li>
@@ -218,6 +219,7 @@ export default function Privacy() {
               />
             </li>
           </ol>
+          {/* </SubTitle> */}
         </StyledPrivacy>
       </StyledSection>
     </MyContainer>

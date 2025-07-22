@@ -41,46 +41,50 @@ const ArchiveSection = () => {
       setArchives(getUniqueDatesWithCount(res.data));
     });
   }, []);
-
+  const showLoader = useSelector((state) => state.loader.isLoading);
   return (
     <>
-      <section>
-        <SubTitle className=" mb-4">Archive</SubTitle>
-        <Table striped bordered hover responsive>
-          <thead>
-            <tr>
-              <th>
-                <SmallText>Month</SmallText>
-              </th>
-              <th>
-                <SmallText $align="center">Posts</SmallText>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {archives.map((item, idx) => {
-              return (
-                <tr key={idx}>
-                  <td>
-                    <SmallText>
-                      {" "}
-                      <Link
-                        to={`/blog/${getMonthNumber(item.month)}/${item.year}`}
-                        className="text-decoration-none"
-                      >
-                        {item.month} {item.year}
-                      </Link>
-                    </SmallText>
-                  </td>
-                  <td>
-                    <SmallText $align="center">{item.count}</SmallText>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </Table>
-      </section>
+      {!showLoader && (
+        <>
+          <SubTitle className=" mb-4">Archive</SubTitle>
+          <Table striped bordered hover responsive>
+            <thead>
+              <tr>
+                <th>
+                  <SmallText>Month</SmallText>
+                </th>
+                <th>
+                  <SmallText $align="center">Posts</SmallText>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {archives.map((item, idx) => {
+                return (
+                  <tr key={idx}>
+                    <td>
+                      <SmallText>
+                        {" "}
+                        <Link
+                          to={`/blog/${getMonthNumber(item.month)}/${
+                            item.year
+                          }`}
+                          className="text-decoration-none"
+                        >
+                          {item.month} {item.year}
+                        </Link>
+                      </SmallText>
+                    </td>
+                    <td>
+                      <SmallText $align="center">{item.count}</SmallText>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table>
+        </>
+      )}
     </>
   );
 };

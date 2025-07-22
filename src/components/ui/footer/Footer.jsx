@@ -46,11 +46,11 @@ const Footer = () => {
                   <FooterLink to="/about">{t("footer.nav1.about")}</FooterLink>
                 </Text>
               </li>
-              <li>
+              {/* <li>
                 <Text>
                   <FooterLink to="/terms">{t("footer.nav1.terms")}</FooterLink>
                 </Text>
-              </li>
+              </li> */}
               <li>
                 <Text>
                   <FooterLink to="/privacy">
