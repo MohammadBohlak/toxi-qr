@@ -12,7 +12,8 @@ const StyledPrivacy = styled.section`
   flex-direction: column;
   row-gap: 30px;
   li::marker {
-    /* font-size: var(--normal-text) !important; */
+    font-size: var(--normal-text) !important;
+    font-weight: bold;
   }
   li {
     margin: 20px 0;
@@ -32,22 +33,22 @@ const StyledPrivacy = styled.section`
 `;
 
 export default function Privacy() {
-  const { t } = useTranslation();
+  const { t } = useTranslation("privacy");
 
   // نقط المصفوفات المترجمة
-  const imagePoints = t("privacy.informationCollect.imageUploads.points", {
+  const imagePoints = t("informationCollect.imageUploads.points", {
     returnObjects: true,
   });
-  const useInfoPoints = t("privacy.useYourInformation.points", {
+  const useInfoPoints = t("useYourInformation.points", {
     returnObjects: true,
   });
-  const legalBasisPoints = t("privacy.legalBasis.points", {
+  const legalBasisPoints = t("legalBasis.points", {
     returnObjects: true,
   });
-  const disclosurePoints = t("privacy.disclosure.points", {
+  const disclosurePoints = t("disclosure.points", {
     returnObjects: true,
   });
-  const yourRightsPoints = t("privacy.yourRights.points", {
+  const yourRightsPoints = t("yourRights.points", {
     returnObjects: true,
   });
 
@@ -55,12 +56,12 @@ export default function Privacy() {
     <MyContainer>
       <StyledSection>
         <StyledPrivacy>
-          <MainTitle $align="initial">{t("privacy.title")}</MainTitle>
+          <MainTitle $align="initial">{t("title")}</MainTitle>
 
           <div>
             <Text
               dangerouslySetInnerHTML={{
-                __html: t("privacy.intro"),
+                __html: t("intro"),
               }}
             />
           </div>
@@ -70,7 +71,7 @@ export default function Privacy() {
             {/* 1. Information We Collect */}
             <li>
               <SubTitle $align="initial">
-                {t("privacy.informationCollect.title")}
+                {t("informationCollect.title")}
               </SubTitle>
 
               <Text>
@@ -79,12 +80,10 @@ export default function Privacy() {
                   <li>
                     <div className="title">
                       <Text $bold>
-                        {t("privacy.informationCollect.imageUploads.title")}
+                        {t("informationCollect.imageUploads.title")}
                       </Text>
                     </div>
-                    <div>
-                      {t("privacy.informationCollect.imageUploads.desc")}
-                    </div>
+                    <div>{t("informationCollect.imageUploads.desc")}</div>
                     {imagePoints.map((pt, i) => (
                       <div key={i}>{pt}</div>
                     ))}
@@ -94,26 +93,20 @@ export default function Privacy() {
                   <li>
                     <div className="title">
                       <Text $bold>
-                        {t("privacy.informationCollect.contactDetails.title")}
+                        {t("informationCollect.contactDetails.title")}
                       </Text>
                     </div>
-                    <div>
-                      {t("privacy.informationCollect.contactDetails.desc")}
-                    </div>
+                    <div>{t("informationCollect.contactDetails.desc")}</div>
                   </li>
 
                   {/* c) Technical and Usage Data */}
                   <li>
                     <div className="title">
                       <Text $bold>
-                        {t(
-                          "privacy.informationCollect.technicalUsageData.title"
-                        )}
+                        {t("informationCollect.technicalUsageData.title")}
                       </Text>
                     </div>
-                    <div>
-                      {t("privacy.informationCollect.technicalUsageData.desc")}
-                    </div>
+                    <div>{t("informationCollect.technicalUsageData.desc")}</div>
                   </li>
                 </ol>
               </Text>
@@ -122,7 +115,7 @@ export default function Privacy() {
             {/* 2. How We Use Your Information */}
             <li>
               <SubTitle $align="initial">
-                {t("privacy.useYourInformation.title")}
+                {t("useYourInformation.title")}
               </SubTitle>
               <Text>
                 {useInfoPoints.map((pt, i) => (
@@ -133,11 +126,9 @@ export default function Privacy() {
 
             {/* 3. Legal Basis for Processing */}
             <li>
-              <SubTitle $align="initial">
-                {t("privacy.legalBasis.title")}
-              </SubTitle>
+              <SubTitle $align="initial">{t("legalBasis.title")}</SubTitle>
               <Text>
-                <div>{t("privacy.legalBasis.desc")}</div>
+                <div>{t("legalBasis.desc")}</div>
                 {legalBasisPoints.map((pt, i) => (
                   <div key={i}>{pt}</div>
                 ))}
@@ -146,11 +137,9 @@ export default function Privacy() {
 
             {/* 4. Disclosure and Sharing of Data */}
             <li>
-              <SubTitle $align="initial">
-                {t("privacy.disclosure.title")}
-              </SubTitle>
+              <SubTitle $align="initial">{t("disclosure.title")}</SubTitle>
               <Text>
-                <div>{t("privacy.disclosure.desc")}</div>
+                <div>{t("disclosure.desc")}</div>
                 {disclosurePoints.map((pt, i) => (
                   <div key={i}>{pt}</div>
                 ))}
@@ -159,19 +148,15 @@ export default function Privacy() {
 
             {/* 5. Data Retention */}
             <li>
-              <SubTitle $align="initial">
-                {t("privacy.dataRetention.title")}
-              </SubTitle>
-              <Text>{t("privacy.dataRetention.desc")}</Text>
+              <SubTitle $align="initial">{t("dataRetention.title")}</SubTitle>
+              <Text>{t("dataRetention.desc")}</Text>
             </li>
 
             {/* 6. Your Rights */}
             <li>
-              <SubTitle $align="initial">
-                {t("privacy.yourRights.title")}
-              </SubTitle>
+              <SubTitle $align="initial">{t("yourRights.title")}</SubTitle>
               <Text>
-                <div>{t("privacy.yourRights.desc")}</div>
+                <div>{t("yourRights.desc")}</div>
                 {yourRightsPoints.map((pt, i) => (
                   <div key={i}>
                     {pt}
@@ -185,36 +170,28 @@ export default function Privacy() {
 
             {/* 7. Data Security */}
             <li>
-              <SubTitle $align="initial">
-                {t("privacy.dataSecurity.title")}
-              </SubTitle>
-              <Text>{t("privacy.dataSecurity.desc")}</Text>
+              <SubTitle $align="initial">{t("dataSecurity.title")}</SubTitle>
+              <Text>{t("dataSecurity.desc")}</Text>
             </li>
 
             {/* 8. Children’s Privacy */}
             <li>
-              <SubTitle $align="initial">
-                {t("privacy.childPrivacy.title")}
-              </SubTitle>
-              <Text>{t("privacy.childPrivacy.desc")}</Text>
+              <SubTitle $align="initial">{t("childPrivacy.title")}</SubTitle>
+              <Text>{t("childPrivacy.desc")}</Text>
             </li>
 
             {/* 9. Changes to This Privacy Policy */}
             <li>
-              <SubTitle $align="initial">
-                {t("privacy.policyChanges.title")}
-              </SubTitle>
-              <Text>{t("privacy.policyChanges.desc")}</Text>
+              <SubTitle $align="initial">{t("policyChanges.title")}</SubTitle>
+              <Text>{t("policyChanges.desc")}</Text>
             </li>
 
             {/* 10. Contact Us */}
             <li>
-              <SubTitle $align="initial">
-                {t("privacy.contactUs.title")}
-              </SubTitle>
+              <SubTitle $align="initial">{t("contactUs.title")}</SubTitle>
               <Text
                 dangerouslySetInnerHTML={{
-                  __html: t("privacy.contactUs.desc"),
+                  __html: t("contactUs.desc"),
                 }}
               />
             </li>

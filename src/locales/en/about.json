@@ -1,0 +1,27 @@
+{
+  "title": "About ToxiQR",
+  "text": "ToxiQR is a website that focuses on identifying venomous and non-venomous species including snakes and spiders around the world using artificial intelligence. With advanced image recognition technology, ToxiQR allows users to upload images of any species for identification. ToxiQR aims to raise awareness about various species and provide users with valuable knowledge. Through the use of technology and education, ToxiQR works to transition the community to a safer and more informed world.",
+  "mision": {
+    "title": "Mission",
+    "text": "ToxiQR intends to raise awareness of various venomous and non-venomous species worldwide, including snakes and spiders. It offers an integrated service on the site, developed using artificial intelligence technologies, allowing users to upload photos of specific species to check their toxicity. Through AI detection, ToxiQR aims to enhance knowledge and awareness, enabling people to identify toxic species associated with these organisms. The initiative involves proper sensitization to ensure that the community understands these risks, ultimately contributing to public safety."
+  },
+  "vision": {
+    "title": "Vision",
+    "text": "ToxiQR aspires to be the leading informational website worldwide, utilizing artificial intelligence to identify images of venomous and non-venomous snakes and spiders. The ultimate aim is to provide awareness globally on this subject matter through knowledge that would empower people to make informed decisions, thus safeguarding themselves and their communities."
+  },
+  "team": {
+    "title": "Team Members",
+    "member1": {
+      "name": "Abdulaziz Arif A Alshammari",
+      "specialist": "MSc in Clinical Toxicology."
+    },
+    "member2": {
+      "name": "Mohammed Almatrafi",
+      "specialist": "MSc in Clinical Toxicology."
+    },
+    "member3": {
+      "name": "Razan Alawaji",
+      "specialist": "MSc in Clinical Toxicology."
+    }
+  }
+}

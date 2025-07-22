@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 export default function FormDetection() {
   const { values, handleChange, handleBlur, errors, touched, setFieldValue } =
     useFormikContext();
-  const { t } = useTranslation();
+  const { t } = useTranslation("home");
 
   return (
     <StyledForm>

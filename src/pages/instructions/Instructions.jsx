@@ -60,16 +60,14 @@ const InstructionText = styled.p`
 `;
 
 export default function Instructions() {
-  const { t } = useTranslation();
-  const items = Array.from({ length: 9 }, (_, i) =>
-    t(`instructions.i${i + 1}`)
-  );
+  const { t } = useTranslation("instructions");
+  const items = Array.from({ length: 9 }, (_, i) => t(`i${i + 1}`));
 
   return (
     <GlassSection>
       <MyContainer>
         <MainTitle style={{ textAlign: "center", marginBottom: "2rem" }}>
-          {t("instructions.title")}
+          {t("title")}
         </MainTitle>
 
         <Grid>

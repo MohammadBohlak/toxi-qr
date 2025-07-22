@@ -1,0 +1,27 @@
+{
+  "title": "First Aid for Bites, Stings, and Poisonous Plant Exposure",
+  "snake": {
+    "title": "Snake Bite:",
+    "steps": [
+      "Request an ambulance without delay.",
+      "Try to recall the snake's shape and color to assist with treatment.",
+      "Clean the bite site thoroughly using soap and water.",
+      "Have the person lie down or sit, ensuring the affected limb is in a comfortable position.",
+      "Remove any tight items (such as rings or bracelets) from the affected area to prevent damage from swelling.",
+      "Cover the bite site with a clean, dry bandage.",
+      "Do not apply a tourniquet or tie off the area near the bite.",
+      "Avoid cutting the wound or attempting to suck out the venom.",
+      "Do not apply ice or submerge the wound in water."
+    ]
+  },
+  "spider": {
+    "title": "Spider Bite:",
+    "steps": [
+      "Remain as calm as possible and try to identify the spider species if you can.",
+      "Clean the bite area with soap and water.",
+      "Use cold compresses to help reduce swelling.",
+      "Elevate the affected area as much as possible.",
+      "Do not attempt to extract the venom; instead, go directly to the nearest emergency facility."
+    ]
+  }
+}

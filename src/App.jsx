@@ -11,7 +11,6 @@ import Press from "./pages/press/Press";
 import OurBlog from "./pages/ourBlog/OurBlog";
 import Footer from "./components/ui/footer/Footer";
 import Privacy from "./pages/privacy/Privacy";
-import Terms from "./pages/terms/Terms";
 import Instructions from "./pages/instructions/Instructions";
 import JoinUs from "./pages/joinUs/JoinUs";
 import About from "./pages/about/About";
@@ -56,7 +55,7 @@ function App() {
             <Route path="/" index element={<Home />} />
             <Route path="/press" element={<Press />} />
             <Route path="/privacy" element={<Privacy />} />
-            <Route path="/terms" element={<Terms />} />
+            {/* <Route path="/terms" element={<Terms />} /> */}
             <Route path="/instructions" element={<Instructions />} />
             <Route path="/join" element={<JoinUs />} />
             <Route path="/about" element={<About />} />

@@ -1,0 +1,26 @@
+{
+  "title": "Join Us",
+  "form": {
+    "prefix": {
+      "select": "Select Title",
+      "validation": "Title is required"
+    },
+    "email": {
+      "placeholder": "Email",
+      "invalid": "Invalid email address",
+      "required": "Email is required"
+    },
+    "name": {
+      "placeholder": "Name",
+      "required": "Name is required"
+    },
+    "specialist": {
+      "placeholder": "Specialist",
+      "required": "Specialist is required"
+    },
+    "country": {
+      "required": "Country is required"
+    },
+    "send": "Send"
+  }
+}

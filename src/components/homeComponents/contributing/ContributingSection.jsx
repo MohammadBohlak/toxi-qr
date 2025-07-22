@@ -10,10 +10,14 @@ const LeftContent = styled(Col)`
   color: #fff;
   ${SubTitle} {
     margin-bottom: 15px;
+    margin-left: -5px;
+    font-size: 20px !important;
   }
-
+  hyphens: auto !important;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
   /* padding: 50px 20px 20px 20px; */
-  padding: 50px 20px 20px var(--p-container);
+  padding: 50px 20px 20px 15px;
   min-height: 350px;
   @media (max-width: 768px) {
     text-align: center;
@@ -31,7 +35,7 @@ const RightContent = styled(Col)`
   padding: 0;
 `;
 export const ContributingSection = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("home");
   return (
     <section>
       <Row style={{ maxWidth: "100%", margin: "0" }}>
@@ -39,7 +43,9 @@ export const ContributingSection = () => {
           md={6}
           className="d-flex justify-content-center flex-column"
         >
-          <SubTitle $color="white">{t("contributing.title")}</SubTitle>
+          <SubTitle $bold style={{ whiteSpace: "nowrap" }} $color="white">
+            {t("contributing.title")}
+          </SubTitle>
           <Text $color="white"> {t("contributing.description")}</Text>
         </LeftContent>
         <RightContent md={6}></RightContent>

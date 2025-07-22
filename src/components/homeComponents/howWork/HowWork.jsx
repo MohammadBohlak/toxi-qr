@@ -20,7 +20,7 @@ const StyledHowWork = styled.section`
   padding: var(--m-top) 0 calc(var(--m-top) + 30px) 0;
 `;
 export default function HowWork() {
-  const { t } = useTranslation();
+  const { t } = useTranslation("home");
   return (
     <StyledHowWork>
       <MyContainer>

@@ -21,7 +21,7 @@ const featuresList = [
 ];
 
 const Features = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("home");
 
   return (
     <StyledFeature>

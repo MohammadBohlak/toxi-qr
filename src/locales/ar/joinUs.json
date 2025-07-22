@@ -1,0 +1,26 @@
+{
+  "title": "انضم إلينا",
+  "form": {
+    "prefix": {
+      "select": "اختر اللقب",
+      "validation": "العنوان مطلوب"
+    },
+    "email": {
+      "placeholder": "البريد الإلكتروني",
+      "invalid": "البريد الإلكتروني غير صالح",
+      "required": "البريد الإلكتروني مطلوب"
+    },
+    "name": {
+      "placeholder": "الاسم",
+      "required": "الاسم مطلوب"
+    },
+    "specialist": {
+      "placeholder": "التخصص",
+      "required": "التخصص مطلوب"
+    },
+    "country": {
+      "required": "الدولة مطلوبة"
+    },
+    "send": "إرسال"
+  }
+}

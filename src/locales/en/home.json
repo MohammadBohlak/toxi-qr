@@ -1,0 +1,92 @@
+{
+  "navbar": {
+    "home": "Home",
+    "instructions": "Instructions",
+    "ourBlog": "Our blog",
+    "press": "Press",
+    "join": "Join us"
+  },
+  "howWork": {
+    "title": "How ToxiQR Works",
+    "steps": {
+      "step1": "Take a Phto",
+      "step2": "Get results",
+      "step3": "Verify by email"
+    }
+  },
+  "contributing": {
+    "title": "Contribute to protecting people and the environment",
+    "description": "Every photo or observation you record of a snake whether found in the wild or near homes can greatly enhance our understanding of snake species and help determine their level of venomousness. Through our website, we analyze your sightings with precision to assess whether the snake is venomous, and we share this data with global biodiversity repositories to assist scientists and wildlife experts. A single photo from you could make a difference and help keep others safe."
+  },
+  "features": {
+    "title": "First Aid for Snake and Spider Bites",
+    "callEmergency": {
+      "title": "Call Emergency Services",
+      "description": "Call emergency services immediately and stay calm. Try to identify or describe the snake or spider if possible, to assist in treatment."
+    },
+    "cleanBite": {
+      "title": "Clean the bite area",
+      "description": ". Clean the bite area gently with soap and water. Do not cut the wound or attempt to suck out the venom."
+    },
+    "avoidIce": {
+      "title": "Do not apply ice",
+      "description": "Do not apply ice or immerse the bite area in water. Avoid using tight bandages or tourniquets."
+    },
+    "immobilize": {
+      "title": "Keep the victim lying down or seated",
+      "description": "Keep the victim lying down or seated, and elevate the affected limb if possible. Minimize movement and ensure comfort."
+    },
+    "removeTightItems": {
+      "title": "Remove any tight items",
+      "description": "Remove any tight items (rings, bracelets, etc.) from the bitten area to prevent skin damage due to swelling."
+    },
+    "coverBite": {
+      "title": "Cover the bite with a clean, dry dressing",
+      "description": "Cover the bite with a clean, dry dressing. For spider bites, cold compresses may be used to reduce swelling"
+    }
+  },
+  "devices": {
+    "subTitle": "Works on all your devices",
+    "text": "Install our mobile apps so you can always observe, even without cell reception or Wi-Fi.",
+    "buttons": {
+      "googlePlay": "Download on Google Play",
+      "appStore": "Download on the App Store"
+    }
+  },
+  "expert": {
+    "title": "Expert opinions",
+    "text": "ToxiQR does a remarkable job at telling apart venomous from non-venomous snakes and spiders, also it does it fast. But what really makes it stand out is that the results aren’t left to AI alone. Every prediction is carefully reviewed by a real expert, adding that extra layer of trust. It’s this smart mix of technology and human experience that makes ToxiQR such a reliable and reassuring tool for anyone dealing with snake encounters.",
+    "name": "Prof. Ahmed Mohajja Alshammari",
+    "specialist": "Ecology and Ecotoxicology ",
+    "country": "Saudi Arabia"
+  },
+  "detection": {
+    "title": "Use ToxiQR’s Detection AI to Identify Snakes and Spiders!",
+    "subtitle": "Email Confirmation",
+    "form": {
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your Email"
+      },
+      "state": "State",
+      "country": {
+        "label": "Country",
+        "placeholder": "Choose your country"
+      },
+      "submit": "Submit"
+    },
+    "validation": {
+      "email_required": "Email is required",
+      "email_invalid": "Invalid email format",
+      "state_required": "State is required",
+      "country_required": "Please select a country",
+      "image_required": "Please upload an image",
+      "image_invalid": "File must be a valid image"
+    },
+    "upload": {
+      "drop_here": "Drop/Upload/Paste Image here",
+      "error_not_image": "Pasted content is not an image.",
+      "error_invalid": "Please upload a valid image file."
+    }
+  }
+}

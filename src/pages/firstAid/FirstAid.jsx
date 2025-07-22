@@ -23,21 +23,19 @@ const StyledAid = styled.div`
 `;
 
 const FirstAid = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("firstAid");
 
   return (
     <StyledSection>
       <MyContainer>
         <StyledAid>
-          <MainTitle className="mb-3 col-md-12">
-            {t("firstAid.title")}
-          </MainTitle>
+          <MainTitle className="mb-3 col-md-12">{t("title")}</MainTitle>
 
           <div className="col-md-6">
-            <SubTitle>{t("firstAid.snake.title")}</SubTitle>
+            <SubTitle>{t("snake.title")}</SubTitle>
             <Text>
               <ul>
-                {t("firstAid.snake.steps", { returnObjects: true }).map(
+                {t("snake.steps", { returnObjects: true }).map(
                   (step, index) => (
                     <li key={index}>{step}</li>
                   )
@@ -47,10 +45,10 @@ const FirstAid = () => {
           </div>
 
           <div className="col-md-6">
-            <SubTitle>{t("firstAid.spider.title")}</SubTitle>
+            <SubTitle>{t("spider.title")}</SubTitle>
             <Text>
               <ul>
-                {t("firstAid.spider.steps", { returnObjects: true }).map(
+                {t("spider.steps", { returnObjects: true }).map(
                   (step, index) => (
                     <li key={index}>{step}</li>
                   )

@@ -13,7 +13,7 @@ import ArchiveSection from "../../components/ourBlogComponents/archiveSection/Ar
 import { useSelector } from "react-redux";
 
 export default function OurBlog() {
-  const { t } = useTranslation();
+  const { t } = useTranslation("ourBlog");
   const [allBlogs, setAllBlogs] = useState([]);
   const [blogs, setBlogs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -52,14 +52,14 @@ export default function OurBlog() {
             <>
               <Col md={8} className="p-0">
                 <MainTitle $align="initial" className="mb-4">
-                  {t("ourBlog.title")}
+                  {t("title")}
                 </MainTitle>
               </Col>
 
               <Col md={8}>
                 <StyledInputGroup className="mb-4">
                   <Form.Control
-                    placeholder={t("ourBlog.searchPlaceholder")}
+                    placeholder={t("searchPlaceholder")}
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     onKeyDown={(e) => {
@@ -69,7 +69,7 @@ export default function OurBlog() {
                       }
                     }}
                   />
-                  <Button onClick={handleSearch}>{t("ourBlog.search")}</Button>
+                  <Button onClick={handleSearch}>{t("search")}</Button>
                 </StyledInputGroup>
               </Col>
             </>

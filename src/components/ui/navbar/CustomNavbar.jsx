@@ -42,7 +42,7 @@ export default function CustomNavbar() {
   const prevScrollY = useRef(0);
   const navRef = useRef(null);
   const location = useLocation();
-  const { t } = useTranslation();
+  const { t } = useTranslation("home");
 
   // إغلاق القائمة عند النقر خارجها
   useEffect(() => {

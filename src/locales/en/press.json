@@ -1,0 +1,14 @@
+{
+  "title": "Press",
+  "subtitle": "ToxiQR in the news",
+  "description": "Select highlights are listed below. For additional updates and stories, follow us on our social media channels or visit our official blog.",
+  "contactTitle": "Get in touch",
+  "contact": {
+    "invite": "If you're a journalist or represent a media outlet, we'd love to keep you informed. Reach out to receive future press releases about our work in snake venom detection, community participation, and the scientific advancements we're contributing to. Contact us at: press@yourdomain.co",
+    "contribute": "Have a snake-related observation, project, or inspiring story you’d like to see featured on our channels? We’d love to share your work with the wider community. Don’t hesitate to reach out — your insight matters!",
+    "legal": "Our platform is operated by an independent nonprofit organization based in [Your Country or Region], dedicated to advancing biodiversity awareness and public safety through technology and community contributions. Registered under [Your Legal Entity Information] EIN or Registration Number: 00-0000000",
+    "avilable": "ToxiQR. Available from",
+    "linkLabel": "https://toxi-qr.vercel.app",
+    "access": "Accessed [date]"
+  }
+}

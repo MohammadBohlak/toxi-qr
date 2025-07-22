@@ -22,7 +22,7 @@ const Press = () => {
     });
   }, []);
   const showLoader = useSelector((state) => state.loader.isLoading);
-  const { t } = useTranslation();
+  const { t } = useTranslation("press");
   return (
     <>
       {!showLoader ? (
@@ -30,9 +30,9 @@ const Press = () => {
           <StyledPress className="m-0 pt-5 pb-5 gap-5">
             <Col md={7} className="d-flex flex-column  gap-5">
               <>
-                <MainTitle $align="initial">{t("press.title")}</MainTitle>
-                <SubTitle>{t("press.subtitle")}</SubTitle>
-                <Text>{t("press.description")}</Text>
+                <MainTitle $align="initial">{t("title")}</MainTitle>
+                <SubTitle>{t("subtitle")}</SubTitle>
+                <Text>{t("description")}</Text>
                 {presses.map((item, idx) => (
                   <TextContent key={idx} className="highlight">
                     <div className="meta">
@@ -51,21 +51,19 @@ const Press = () => {
             </Col>
             <Col md={4} className="d-flex flex-column  gap-5">
               <>
-                <MainTitle $align="initial">
-                  {t("press.contactTitle")}
-                </MainTitle>
-                <Text>{t("press.contact.invite")}</Text>
-                <Text>{t("press.contact.contribute")}</Text>
-                <Text>{t("press.contact.legal")}</Text>
+                <MainTitle $align="initial">{t("contactTitle")}</MainTitle>
+                <Text>{t("contact.invite")}</Text>
+                <Text>{t("contact.contribute")}</Text>
+                <Text>{t("contact.legal")}</Text>
                 <Text>
-                  <div>{t("press.contact.avilable")}</div>
+                  <div>{t("contact.avilable")}</div>
                   <a
                     href="https://toxi-qr.vercel.app/"
                     style={{ color: "#0d6efd", textDecoration: "none" }}
                   >
-                    {t("press.contact.linkLabel")}
+                    {t("contact.linkLabel")}
                   </a>{" "}
-                  {t("press.contact.access")}
+                  {t("contact.access")}
                 </Text>
               </>
             </Col>

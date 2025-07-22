@@ -17,7 +17,7 @@ const Blogs = ({ blogs, isOneBlog = false }) => {
             </SubTitle>
             <Card.Img
               style={{ maxHeight: "180px", objectFit: "contain" }}
-              src={item.imasge ? item.image : logo}
+              src={item.image ? item.image : logo}
               alt={item.title}
             />
             <Card.Body className="p-0 pt-3">

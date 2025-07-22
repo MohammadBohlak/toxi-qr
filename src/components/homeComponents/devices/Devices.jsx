@@ -5,7 +5,7 @@ import { SubTitle, Text } from "../../common/texts";
 import { LeftDevices, RightDevices, StyledDevices } from "./devices.styles";
 
 const Devices = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("home");
   return (
     <>
       <StyledDevices className="m-0">

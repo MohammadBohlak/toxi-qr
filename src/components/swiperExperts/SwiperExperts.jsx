@@ -13,7 +13,7 @@ import expert from "../../assets/images/expert.png";
 import { useTranslation } from "react-i18next";
 import { StyledSwiper } from "./swiperSlide";
 const SwiperExperts = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("home");
   return (
     <StyledSwiper>
       <MainTitle className="mb-5">{t("expert.title")}</MainTitle>

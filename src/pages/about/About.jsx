@@ -13,32 +13,32 @@ const StyledAbout = styled.div`
   flex-wrap: wrap;
 `;
 const About = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("about");
   return (
     <MyContainer>
       <StyledSection>
         <StyledAbout>
           <div className="col-md-12">
             <MainTitle $align="initial" className="mb-3">
-              {t("about.title")}
+              {t("title")}
             </MainTitle>
-            <Text>{t("about.text")}</Text>
+            <Text>{t("text")}</Text>
           </div>
 
           <div className="col-md-6 p-3">
-            <SubTitle>{t("about.mision.title")}</SubTitle>
-            <Text>{t("about.mision.text")}</Text>
+            <SubTitle>{t("mision.title")}</SubTitle>
+            <Text>{t("mision.text")}</Text>
           </div>
           <div className="col-md-6 p-3">
-            <SubTitle>{t("about.vision.title")}</SubTitle>
-            <Text>{t("about.vision.text")}</Text>
+            <SubTitle>{t("vision.title")}</SubTitle>
+            <Text>{t("vision.text")}</Text>
           </div>
           <div className="m-auto">
-            <SubTitle $align="center">{t("about.team.title")}</SubTitle>
+            <SubTitle $align="center">{t("team.title")}</SubTitle>
             {[1, 2, 3].map((e, i) => (
               <Text key={i} $align="center">
-                <strong>{t(`about.team.member${e}.name`)}</strong> ,{" "}
-                {t(`about.team.member${e}.specialist`)}
+                <strong>{t(`team.member${e}.name`)}</strong> ,{" "}
+                {t(`team.member${e}.specialist`)}
               </Text>
             ))}
           </div>

@@ -7,11 +7,11 @@ import { useSelector } from "react-redux";
 
 export default function BlogList() {
   const { blogs } = useOutletContext();
-  const { t } = useTranslation();
+  const { t } = useTranslation("ourBlog");
   const showLoader = useSelector((state) => state.loader.isLoading);
   return blogs.length > 0 ? (
     <Blogs blogs={blogs} />
   ) : (
-    <SubTitle>{!showLoader && t("ourBlog.searchNotFound")}</SubTitle>
+    <SubTitle>{!showLoader && t("searchNotFound")}</SubTitle>
   );
 }

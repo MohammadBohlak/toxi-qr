@@ -19,19 +19,20 @@ import {
   StyledControl,
   StyledJoinUs,
 } from "./joinUs.styles";
-import axios from "axios";
 import { useSelector } from "react-redux";
 import countryDataEn from "../../assets/countryEn.json";
 import countryDataAr from "../../assets/countryAr.json";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import { MainTitle } from "../../components/common/texts";
 
-// StyledSelect يعتمد Form.Select ويقبل isInvalid
 const StyledSelect = styled(Form.Select)`
   flex: 1;
   font-size: var(--normal-text);
 `;
 
 export default function JoinUsPage() {
+  const { t } = useTranslation("joinUs");
   const lang = useSelector((state) => state.lang.language);
   const countryData = lang === "ar" ? countryDataAr : countryDataEn;
 
@@ -44,37 +45,27 @@ export default function JoinUsPage() {
   };
 
   const validationSchema = Yup.object({
-    prefix: Yup.string().required("Title is required"),
+    prefix: Yup.string().required(t("form.prefix.validation")),
     email: Yup.string()
-      .email("Invalid email address")
-      .required("Email is required"),
-    name: Yup.string().required("Name is required"),
-    specialist: Yup.string().required("Specialist is required"),
-    country: Yup.string().required("Country is required"),
+      .email(t("form.email.invalid"))
+      .required(t("form.email.required")),
+    name: Yup.string().required(t("form.name.required")),
+    specialist: Yup.string().required(t("form.specialist.required")),
+    country: Yup.string().required(t("form.country.required")),
   });
 
   const handleSubmit = async (values, { resetForm }) => {
     const date = new Date().toISOString().slice(0, 10);
-    // try {
-    //   await axios.post("https://toxiqr.pythonanywhere.com/api/joinus", {
-    //     prefix: values.prefix,
-    //     email: values.email,
-    //     name: values.name,
-    //     specialist: values.specialist,
-    //     country: countryData[values.country],
-    //     date,
-    //   });
-    //   resetForm();
-    // } catch (e) {
-    //   console.error(e.response?.data || e);
-    // }
-    console.log({ ...values, date });
+    console.log({ ...values, country: countryData[values.country], date });
+    resetForm();
   };
 
   return (
     <StyledJoinUs>
       <Container style={{ maxWidth: 500, margin: "2rem auto" }}>
-        <h2 style={{ textAlign: "center", marginBottom: "1.5rem" }}>Join Us</h2>
+        <MainTitle style={{ textAlign: "center", marginBottom: "1.5rem" }}>
+          {t("title")}
+        </MainTitle>
 
         <Formik
           initialValues={initialValues}
@@ -104,7 +95,7 @@ export default function JoinUsPage() {
                     onBlur={handleBlur}
                     isInvalid={touched.prefix && !!errors.prefix}
                   >
-                    <option value="">Select Title</option>
+                    <option value="">{t("form.prefix.select")}</option>
                     <option value="Mr">Mr</option>
                     <option value="Dr">Dr</option>
                     <option value="Prof">Prof</option>
@@ -127,7 +118,7 @@ export default function JoinUsPage() {
                   <StyledControl
                     name="email"
                     type="email"
-                    placeholder="Email"
+                    placeholder={t("form.email.placeholder")}
                     value={values.email}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -151,7 +142,7 @@ export default function JoinUsPage() {
                   <StyledControl
                     name="name"
                     type="text"
-                    placeholder="Name"
+                    placeholder={t("form.name.placeholder")}
                     value={values.name}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -175,7 +166,7 @@ export default function JoinUsPage() {
                   <StyledControl
                     name="specialist"
                     type="text"
-                    placeholder="Specialist"
+                    placeholder={t("form.specialist.placeholder")}
                     value={values.specialist}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -208,7 +199,7 @@ export default function JoinUsPage() {
 
               {/* Send */}
               <div className="d-flex justify-content-center mt-5">
-                <SendButton type="submit">Send</SendButton>
+                <SendButton type="submit">{t("form.send")}</SendButton>
               </div>
             </Form>
           )}

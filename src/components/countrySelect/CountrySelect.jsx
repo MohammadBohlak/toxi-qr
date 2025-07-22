@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 export default function CountrySelect({ name, value, onChange }) {
   const lang = useSelector((state) => state.lang.language);
   const countryData = lang === "ar" ? countryDataAr : countryDataEn;
-  const { t } = useTranslation();
+  const { t } = useTranslation("home");
   // 1) خيارات react-select
   const options = useMemo(
     () =>

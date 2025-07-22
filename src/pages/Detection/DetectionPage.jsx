@@ -16,7 +16,7 @@ import { useTranslation } from "react-i18next";
 import { Submit } from "./detection.styles";
 
 export default function DetectionPage() {
-  const { t } = useTranslation();
+  const { t } = useTranslation("home");
 
   // 1) القيم الابتدائية
   const initialValues = {

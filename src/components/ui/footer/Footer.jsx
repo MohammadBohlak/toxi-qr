@@ -24,7 +24,7 @@ import {
 import Logo from "../../common/Logo";
 
 const Footer = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("footer");
 
   return (
     <StyledFooter style={{ background: "#eee" }}>
@@ -43,24 +43,22 @@ const Footer = () => {
             <NavList>
               <li>
                 <Text>
-                  <FooterLink to="/about">{t("footer.nav1.about")}</FooterLink>
+                  <FooterLink to="/about">{t("nav1.about")}</FooterLink>
                 </Text>
               </li>
               {/* <li>
                 <Text>
-                  <FooterLink to="/terms">{t("footer.nav1.terms")}</FooterLink>
+                  <FooterLink to="/terms">{t("nav1.terms")}</FooterLink>
                 </Text>
               </li> */}
               <li>
                 <Text>
-                  <FooterLink to="/privacy">
-                    {t("footer.nav1.privacy")}
-                  </FooterLink>
+                  <FooterLink to="/privacy">{t("nav1.privacy")}</FooterLink>
                 </Text>
               </li>
               <li>
                 <Text>
-                  <FooterLink to="/aid">{t("footer.nav1.aid")}</FooterLink>
+                  <FooterLink to="/aid">{t("nav1.aid")}</FooterLink>
                 </Text>
               </li>
             </NavList>
@@ -118,7 +116,7 @@ const Footer = () => {
 
       <BottomBar>
         <SmallText $align="center" className="text-white">
-          {t("footer.copyright", { year: new Date().getFullYear() })}
+          {t("copyright", { year: new Date().getFullYear() })}
         </SmallText>
       </BottomBar>
     </StyledFooter>

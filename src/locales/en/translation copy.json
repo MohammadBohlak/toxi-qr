@@ -1,0 +1,275 @@
+{
+  "navbar": {
+    "home": "Home",
+    "instructions": "Instructions",
+    "ourBlog": "Our blog",
+    "press": "Press",
+    "join": "Join us"
+  },
+  "howWork": {
+    "title": "How ToxiQR Works",
+    "steps": {
+      "step1": "Take a Phto",
+      "step2": "Get results",
+      "step3": "Verify by email"
+    }
+  },
+  "contributing": {
+    "title": "Contribute to protecting people and the environment",
+    "description": "Every photo or observation you record of a snake whether found in the wild or near homes can greatly enhance our understanding of snake species and help determine their level of venomousness. Through our website, we analyze your sightings with precision to assess whether the snake is venomous, and we share this data with global biodiversity repositories to assist scientists and wildlife experts. A single photo from you could make a difference and help keep others safe."
+  },
+  "features": {
+    "title": "First Aid for Snake and Spider Bites",
+    "callEmergency": {
+      "title": "Call Emergency Services",
+      "description": "Call emergency services immediately and stay calm. Try to identify or describe the snake or spider if possible, to assist in treatment."
+    },
+    "cleanBite": {
+      "title": "Clean the bite area",
+      "description": ". Clean the bite area gently with soap and water. Do not cut the wound or attempt to suck out the venom."
+    },
+    "avoidIce": {
+      "title": "Do not apply ice",
+      "description": "Do not apply ice or immerse the bite area in water. Avoid using tight bandages or tourniquets."
+    },
+    "immobilize": {
+      "title": "Keep the victim lying down or seated",
+      "description": "Keep the victim lying down or seated, and elevate the affected limb if possible. Minimize movement and ensure comfort."
+    },
+    "removeTightItems": {
+      "title": "Remove any tight items",
+      "description": "Remove any tight items (rings, bracelets, etc.) from the bitten area to prevent skin damage due to swelling."
+    },
+    "coverBite": {
+      "title": "Cover the bite with a clean, dry dressing",
+      "description": "Cover the bite with a clean, dry dressing. For spider bites, cold compresses may be used to reduce swelling"
+    }
+  },
+  "devices": {
+    "subTitle": "Works on all your devices",
+    "text": "Install our mobile apps so you can always observe, even without cell reception or Wi-Fi.",
+    "buttons": {
+      "googlePlay": "Download on Google Play",
+      "appStore": "Download on the App Store"
+    }
+  },
+  "expert": {
+    "title": "Expert opinions",
+    "text": "ToxiQR does a remarkable job at telling apart venomous from non-venomous snakes and spiders, also it does it fast. But what really makes it stand out is that the results aren’t left to AI alone. Every prediction is carefully reviewed by a real expert, adding that extra layer of trust. It’s this smart mix of technology and human experience that makes ToxiQR such a reliable and reassuring tool for anyone dealing with snake encounters.",
+    "name": "Prof. Ahmed Mohajja Alshammari",
+    "specialist": "Ecology and Ecotoxicology ",
+    "country": "Saudi Arabia"
+  },
+  "ourBlog": {
+    "title": "Our blog",
+    "search": "Search",
+    "searchPlaceholder": "Search by title",
+    "searchNotFound": "No results found"
+  },
+  "press": {
+    "title": "Press",
+    "subtitle": "ToxiQR in the news",
+    "description": "Select highlights are listed below. For additional updates and stories, follow us on our social media channels or visit our official blog.",
+    "contactTitle": "Get in touch",
+    "contact": {
+      "invite": "If you're a journalist or represent a media outlet, we'd love to keep you informed. Reach out to receive future press releases about our work in snake venom detection, community participation, and the scientific advancements we're contributing to. Contact us at: press@yourdomain.co",
+      "contribute": "Have a snake-related observation, project, or inspiring story you’d like to see featured on our channels? We’d love to share your work with the wider community. Don’t hesitate to reach out — your insight matters!",
+      "legal": "Our platform is operated by an independent nonprofit organization based in [Your Country or Region], dedicated to advancing biodiversity awareness and public safety through technology and community contributions. Registered under [Your Legal Entity Information] EIN or Registration Number: 00-0000000",
+      "avilable": "ToxiQR. Available from",
+      "linkLabel": "https://toxi-qr.vercel.app",
+      "access": "Accessed [date]"
+    }
+  },
+  "instructions": {
+    "title": "Important Instructions About Using ToxiQR",
+    "i1": "You should not put yourself at risk by approaching poisonous animals to photograph them.",
+    "i2": "The quality of the image plays a significant role in identifying the types of animals, so it is advisable to use high-quality photos and repeatedly upload the image from different angles to ensure the result.",
+    "i3": " Results are not absolutely accurate; therefore, verification of information is recommended.",
+    "i4": "ToxiQR is based on a personal, volunteer, and non-profit awareness creation.",
+    "i5": "ToxiQR cannot substitute a consultation with a physician in your home country, especially if you suspect whether the animals is toxic. In such cases, contacting local authorities of that country will be in a position to verify if the animals are poisonous.",
+    "i6": "Information will be updated regularly until we achieve a high level of accuracy in our work.",
+    "i7": " The specific species may have a poisonous gland, but the criterion for evaluating the results depends mainly on the effect of this toxicity on human health.",
+    "i8": "ToxiQR will save the attached images to improve work quality and use them to train Al models. By attaching an image, you agree to its use for development and training purposes in ToxiQR.",
+    "i9": "If you have any suggestions or complaints, please do not hesitate to contact us via ToxiQR accounts on social media or email."
+  },
+  "detection": {
+    "title": "Use ToxiQR’s Detection AI to Identify Snakes and Spiders!",
+    "subtitle": "Email Confirmation",
+    "form": {
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your Email"
+      },
+      "state": "State",
+      "country": {
+        "label": "Country",
+        "placeholder": "Choose your country"
+      },
+      "submit": "Submit"
+    },
+    "validation": {
+      "email_required": "Email is required",
+      "email_invalid": "Invalid email format",
+      "state_required": "State is required",
+      "country_required": "Please select a country",
+      "image_required": "Please upload an image",
+      "image_invalid": "File must be a valid image"
+    },
+    "upload": {
+      "drop_here": "Drop/Upload/Paste Image here",
+      "error_not_image": "Pasted content is not an image.",
+      "error_invalid": "Please upload a valid image file."
+    }
+  },
+  "about": {
+    "title": "About ToxiQR",
+    "text": "ToxiQR is a website that focuses on identifying venomous and non-venomous species including snakes and spiders around the world using artificial intelligence. With advanced image recognition technology, ToxiQR allows users to upload images of any species for identification. ToxiQR aims to raise awareness about various species and provide users with valuable knowledge. Through the use of technology and education, ToxiQR works to transition the community to a safer and more informed world.",
+    "mision": {
+      "title": "Mission",
+      "text": "ToxiQR intends to raise awareness of various venomous and non-venomous species worldwide, including snakes and spiders. It offers an integrated service on the site, developed using artificial intelligence technologies, allowing users to upload photos of specific species to check their toxicity. Through AI detection, ToxiQR aims to enhance knowledge and awareness, enabling people to identify toxic species associated with these organisms. The initiative involves proper sensitization to ensure that the community understands these risks, ultimately contributing to public safety."
+    },
+    "vision": {
+      "title": "Vision",
+      "text": "ToxiQR aspires to be the leading informational website worldwide, utilizing artificial intelligence to identify images of venomous and non-venomous snakes and spiders. The ultimate aim is to provide awareness globally on this subject matter through knowledge that would empower people to make informed decisions, thus safeguarding themselves and their communities."
+    },
+    "team": {
+      "title": "Team Members",
+      "member1": {
+        "name": "Abdulaziz Arif A Alshammari",
+        "specialist": "MSc in Clinical Toxicology."
+      },
+      "member2": {
+        "name": "Mohammed Almatrafi",
+        "specialist": "MSc in Clinical Toxicology."
+      },
+      "member3": {
+        "name": "Razan Alawaji",
+        "specialist": "MSc in Clinical Toxicology."
+      }
+    }
+  },
+  "firstAid": {
+    "title": "First Aid for Bites, Stings, and Poisonous Plant Exposure",
+    "snake": {
+      "title": "Snake Bite:",
+      "steps": [
+        "Request an ambulance without delay.",
+        "Try to recall the snake's shape and color to assist with treatment.",
+        "Clean the bite site thoroughly using soap and water.",
+        "Have the person lie down or sit, ensuring the affected limb is in a comfortable position.",
+        "Remove any tight items (such as rings or bracelets) from the affected area to prevent damage from swelling.",
+        "Cover the bite site with a clean, dry bandage.",
+        "Do not apply a tourniquet or tie off the area near the bite.",
+        "Avoid cutting the wound or attempting to suck out the venom.",
+        "Do not apply ice or submerge the wound in water."
+      ]
+    },
+    "spider": {
+      "title": "Spider Bite:",
+      "steps": [
+        "Remain as calm as possible and try to identify the spider species if you can.",
+        "Clean the bite area with soap and water.",
+        "Use cold compresses to help reduce swelling.",
+        "Elevate the affected area as much as possible.",
+        "Do not attempt to extract the venom; instead, go directly to the nearest emergency facility."
+      ]
+    }
+  },
+  "footer": {
+    "nav1": {
+      "about": "About",
+      "terms": "Terms of Use",
+      "privacy": "Privacy",
+      "aid": "First Aid"
+    },
+    "nav2": {
+      "press": "Press",
+      "blog": "Our blog",
+      "instructions": "Instructions"
+    },
+    "copyright": "© {{year}} ToxiQR. All rights reserved."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "intro": "At ToxiQR (<a href=\"https://www.ToxiQR.org\">www.ToxiQR.org</a>), we value your privacy and want to keep your personal data secure. This Privacy Policy is designed to describe how we collect, use, store, and disclose your data when you visit or use our website or mobile app. By visiting or using ToxiQR, you agree to the terms of this Privacy Policy.",
+    "informationCollect": {
+      "title": "Information We Collect",
+      "imageUploads": {
+        "title": "Image Uploads",
+        "desc": "By sending photos to ToxiQR for AI scanning, we receive the photos and hold them on a temporary basis to scan and identify the presence of poisonous or harmless species. You grant us permission to use the photo for:",
+        "points": [
+          "AI detection and in-house testing",
+          "Scientific research and public awareness campaigns",
+          "Education blogs or published news on wildlife identification and safety",
+          "We take care that no identifying personal information (e.g., names, geolocation data) is associated with images published in any public or scientific environment."
+        ]
+      },
+      "contactDetails": {
+        "title": "Contact Details",
+        "desc": "If you request professional confirmation or wish to be notified, we may retain your e-mail address or other contact information for the exclusive purpose of communicating results or information related to your inquiry."
+      },
+      "technicalUsageData": {
+        "title": "Technical and Usage Data",
+        "desc": "We are able to collect non-personal data like IP address, browser type, device information, accessed pages, time on site, and referring URLs. We use this data in tracking the performance of websites, improving user experience, and determining unauthorized misuse or abuse."
+      }
+    },
+    "useYourInformation": {
+      "title": "How We Use Your Information",
+      "points": [
+        "For providing accurate species identification using our AI facilities",
+        "For answering user queries and expert verification requests",
+        "For improving the functionality and security of our platform",
+        "For conducting scientific research or posting content for learning and knowledge reasons"
+      ]
+    },
+    "legalBasis": {
+      "title": "Legal Basis for Processing",
+      "desc": "We process your information based on one or more of the following legal basis:",
+      "points": [
+        "Your consent (e.g., sending photos, requesting us to confirm)",
+        "Legitimate interests in improving our services and promoting public knowledge",
+        "Being required by law"
+      ]
+    },
+    "disclosure": {
+      "title": "Disclosure and Sharing of Data",
+      "desc": "ToxiQR does not sell or rent out your personal data to other parties. We might disclose your data:",
+      "points": [
+        "To service providers assisting in website operation (under strict confidentiality agreements)",
+        "When required by law or to respond to lawful requests from public authorities",
+        "To protect the rights, property, or safety of ToxiQR, our users, or others"
+      ]
+    },
+    "dataRetention": {
+      "title": "Data Retention",
+      "desc": "Uploaded images and associated data are retained only as long as necessary for the purposes outlined in this policy. Irrelevant or unused data may be deleted periodically."
+    },
+    "yourRights": {
+      "title": "Your Rights",
+      "desc": "Depending on where you are, you may be entitled to:",
+      "points": [
+        "Have access to the personal data we retain about you",
+        "Have your information corrected or removed",
+        "Object or restrict specific processing activities",
+        "Withdraw consent at any time (without affecting any prior processing)",
+        "To exercise any of these, please contact us on:"
+      ]
+    },
+    "dataSecurity": {
+      "title": "Data Security",
+      "desc": "We take the proper technical and organizational measures to protect your data. There is no way that is 100% secure, but we aim to keep your information safe from unauthorized access, modification, disclosure, or destruction."
+    },
+    "childPrivacy": {
+      "title": "Children's Privacy",
+      "desc": "ToxiQR is not designed for kids under 13 years old. We don't knowingly collect information from kids. If we find this type of information has been collected, we will delete it immediately."
+    },
+    "policyChanges": {
+      "title": "Changes to This Privacy Policy",
+      "desc": "We may change this Privacy Policy at any time. We encourage the users to visit this page often. Continued use of ToxiQR after changes will be deemed to be your consent to the new policy."
+    },
+    "contactUs": {
+      "title": "Contact Us",
+      "desc": "If you have any questions or concerns about this Privacy Policy, please contact us: Email: <a href=\"mailto:support@toxiqr.com\">support@toxiqr.com</a>"
+    }
+  }
+}
