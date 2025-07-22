@@ -17,7 +17,7 @@ export default function UploadImage({ name }) {
   const fileInputRef = useRef(null);
   const file = values[name];
   const error = touched[name] && errors[name];
-  const { t } = useTranslation();
+  const { t } = useTranslation("home");
 
   const validateAndSetFile = (candidate) => {
     if (candidate && candidate.type.startsWith("image/")) {

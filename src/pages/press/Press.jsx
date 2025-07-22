@@ -17,7 +17,6 @@ const Press = () => {
   const [presses, setPtresses] = useState([]);
   useEffect(() => {
     api.get("/press").then((res) => {
-      console.log(res.data);
       setPtresses(res.data);
     });
   }, []);

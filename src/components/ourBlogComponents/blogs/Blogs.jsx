@@ -13,7 +13,6 @@ const Blogs = ({ blogs, isOneBlog = false }) => {
               {idx + 1}. In the{" "}
               {item.country.charAt(0).toUpperCase() +
                 item.country.slice(1).toLowerCase()}
-              {console.log(blogs[0])}
             </SubTitle>
             <Card.Img
               style={{ maxHeight: "180px", objectFit: "contain" }}

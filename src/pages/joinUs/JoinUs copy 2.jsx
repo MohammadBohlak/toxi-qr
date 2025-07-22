@@ -63,7 +63,6 @@ export default function JoinUsPage() {
     //   .then((res) => console.log(res.data))
     //   .catch((err) => console.log(err.response.data));
 
-    console.log({ ...values, date: formattedDate });
     resetForm();
   };
 
