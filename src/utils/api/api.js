@@ -15,6 +15,16 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// api.interceptors.response.use(
+//   (response) => {
+//     store.dispatch(hideLoader());
+//     return response;
+//   },
+//   (error) => {
+//     store.dispatch(hideLoader());
+//     return Promise.reject(error);
+//   }
+// );
 api.interceptors.response.use(
   (response) => {
     store.dispatch(hideLoader());
@@ -22,6 +32,14 @@ api.interceptors.response.use(
   },
   (error) => {
     store.dispatch(hideLoader());
+
+    // فقط عند انقطاع الإنترنت
+    if (!navigator.onLine) {
+      alert("⚠️ لا يوجد اتصال بالإنترنت. يرجى التحقق من الشبكة.");
+      return Promise.reject(new Error("Offline"));
+    }
+
+    // باقي الأخطاء تُترك للمكونات للتعامل معها
     return Promise.reject(error);
   }
 );

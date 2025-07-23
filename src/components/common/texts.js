@@ -1,25 +1,29 @@
 import styled from "styled-components";
 
-export const MainTitle = styled.h2`
+const TitleShared = styled.h2`
+  text-align: ${({ $align }) => ($align ? $align : "initial")};
+  color: ${({ theme, $color }) => ($color ? $color : theme.colors.text)};
+  font-weight: ${({ $normal }) => ($normal ? "normal" : "bold")};
+`;
+
+export const MainTitle = styled(TitleShared)`
   font-size: var(--big-text);
-  text-align: ${({ $align }) => ($align ? $align : "center")};
-  color: ${({ theme, $color }) => ($color ? $color : theme.colors.text)};
-  font-weight: ${({ $normal }) => ($normal ? "normal" : "bold")};
 `;
-export const SubTitle = styled.h2`
+export const SubTitle = styled(TitleShared)`
   font-size: var(--normal-text) !important;
-  text-align: ${({ $align }) => ($align ? $align : "initial")};
-  color: ${({ theme, $color }) => ($color ? $color : theme.colors.text)};
-  font-weight: ${({ $normal }) => ($normal ? "normal" : "bold")};
 `;
-export const Text = styled.div`
-  font-size: var(--small-text);
+
+const TextShared = styled.div`
   text-align: ${({ $align }) => ($align ? $align : "initial")};
   color: ${({ theme, $color }) => ($color ? $color : theme.colors.text)};
+  hyphens: auto !important;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
   font-weight: ${({ $bold }) => ($bold ? "bold" : "normal")};
 `;
-export const SmallText = styled.div`
+export const Text = styled(TextShared)`
+  font-size: var(--small-text);
+`;
+export const SmallText = styled(TextShared)`
   font-size: var(--min-text);
-  text-align: ${({ $align }) => ($align ? `${$align}` : "initial")};
-  color: ${({ theme, $color }) => ($color ? $color : theme.colors.text)};
 `;

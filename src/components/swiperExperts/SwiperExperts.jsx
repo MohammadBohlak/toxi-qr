@@ -16,7 +16,9 @@ const SwiperExperts = () => {
   const { t } = useTranslation("home");
   return (
     <StyledSwiper>
-      <MainTitle className="mb-5">{t("expert.title")}</MainTitle>
+      <MainTitle $align="center" className="mb-5">
+        {t("expert.title")}
+      </MainTitle>
       <Swiper
         pagination={{
           dynamicBullets: true,
@@ -24,7 +26,7 @@ const SwiperExperts = () => {
         modules={[Pagination]}
         className="mySwiper"
       >
-        {[1, 2].map((item, idx) => (
+        {[1].map((item, idx) => (
           <SwiperSlide key={idx}>
             <div className="left d-flex flex-column gap-3">
               <Text className="text">{t("expert.text")}</Text>

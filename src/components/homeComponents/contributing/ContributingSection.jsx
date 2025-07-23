@@ -1,39 +1,8 @@
-import React from "react";
-import { Col, Row } from "react-bootstrap";
-import styled from "styled-components";
-
-import img from "../../../assets/images/snakes/contributing.jpg";
 import { useTranslation } from "react-i18next";
 import { SubTitle, Text } from "../../common/texts";
-const LeftContent = styled(Col)`
-  background-color: #000;
-  color: #fff;
-  ${SubTitle} {
-    margin-bottom: 15px;
-    margin-left: -5px;
-    font-size: 20px !important;
-  }
-  hyphens: auto !important;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  /* padding: 50px 20px 20px 20px; */
-  padding: 50px 20px 20px 15px;
-  min-height: 350px;
-  @media (max-width: 768px) {
-    text-align: center;
-    * {
-      text-align: center !important;
-    }
-  }
-`;
-const RightContent = styled(Col)`
-  min-height: 350px;
-  background-image: url(${img});
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 100% 100%;
-  padding: 0;
-`;
+import { LeftContent, RightContent } from "./contributingSection.styles";
+import { Row } from "react-bootstrap";
+
 export const ContributingSection = () => {
   const { t } = useTranslation("home");
   return (
