@@ -2,7 +2,6 @@ import { Card } from "react-bootstrap";
 import styled from "styled-components";
 
 export const BlogCard = styled(Card)`
-  direction: ltr;
   border: none;
   margin-bottom: 2rem;
   box-shadow: ${({ $shadow }) =>

@@ -5,7 +5,6 @@ import { api } from "../../utils/api/api";
 import MyContainer from "../../components/ui/myContainer/MyContainer";
 import { StyledSection } from "../../components/common/sections";
 import { MainTitle } from "../../components/common/texts";
-// ↓ import Outlet
 import { Outlet } from "react-router-dom";
 import { StyledInputGroup } from "./ourBlog.styles";
 import { useTranslation } from "react-i18next";
@@ -14,38 +13,51 @@ import { useSelector } from "react-redux";
 
 export default function OurBlog() {
   const lang = useSelector((state) => state.lang.language);
-  console.log(lang);
   const { t } = useTranslation("ourBlog");
-  const [allBlogs, setAllBlogs] = useState([]);
+
+  // 1) مخزن للبيانات الخام
+  const [rawBlogs, setRawBlogs] = useState([]);
+  // 2) مخزن للبيانات المعروضة (عربي أو إنجليزي)
   const [blogs, setBlogs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
+  // جلب البيانات مرة واحدة عند المونت
   useEffect(() => {
     api.get("/blogs").then((res) => {
-      setAllBlogs(res.data);
-      setBlogs(res.data);
+      setRawBlogs(res.data);
     });
   }, []);
 
+  // تحويل rawBlogs إلى localizedBlogs كلما تغيرت اللغة أو البيانات الخام
   useEffect(() => {
-    if (searchTerm.trim() === "") {
-      setBlogs(allBlogs);
-    }
-  }, [searchTerm, allBlogs]);
+    const localized = rawBlogs.map((b) => ({
+      ...b,
+      displayTitle: lang === "ar" ? b.title_ar || b.title : b.title,
+      displayShortDesc:
+        lang === "ar"
+          ? b.short_description_ar || b.description_ar
+          : b.short_description || b.description,
+      displayCountry: lang === "ar" ? b.country_ar : b.country,
+      displayDate: b.date, // لو تحتاج ترجمة التاريخ ممكن تضيف i18n
+    }));
 
-  const handleSearch = () => {
-    const term = searchTerm.trim().toLowerCase();
-    if (!term) {
-      setBlogs(allBlogs);
-      return;
+    setBlogs(localized);
+  }, [lang, rawBlogs]);
+
+  // فلترة البحث على الخاصية الناتجة displayTitle
+  useEffect(() => {
+    if (!searchTerm.trim()) {
+      setBlogs((prev) => [...prev]); // دون تغيير
+    } else {
+      const term = searchTerm.trim().toLowerCase();
+      setBlogs((prev) =>
+        prev.filter((b) => b.displayTitle.toLowerCase().includes(term))
+      );
     }
-    const filtered = allBlogs.filter((b) =>
-      b.title.toLowerCase().includes(term)
-    );
-    setBlogs(filtered);
-  };
+  }, [searchTerm]);
 
   const showLoader = useSelector((state) => state.loader.isLoading);
+
   return (
     <StyledSection>
       <MyContainer>
@@ -67,21 +79,22 @@ export default function OurBlog() {
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
                         e.preventDefault();
-                        handleSearch();
                       }
                     }}
                   />
-                  <Button onClick={handleSearch}>{t("search")}</Button>
+                  <Button onClick={() => {}}>{t("search")}</Button>
                 </StyledInputGroup>
               </Col>
             </>
           ) : (
-            <div style={{ minHeight: "500px" }}></div>
+            <div style={{ minHeight: "500px" }} />
           )}
 
-          {/* ← this column is now your outlet */}
           <Col md={8}>
-            {!showLoader && <Outlet context={{ allBlogs, blogs, setBlogs }} />}
+            {!showLoader && (
+              // هنا نمرر المصفوفة المترجمة
+              <Outlet context={{ allBlogs: rawBlogs, blogs, setBlogs }} />
+            )}
           </Col>
 
           <Col md={3}>

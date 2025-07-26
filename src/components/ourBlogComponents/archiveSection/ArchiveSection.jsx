@@ -1,17 +1,9 @@
-import { AiOutlineSearch } from "react-icons/ai";
 // src/components/Archive/ArchiveSection.jsx
 import { useEffect, useState } from "react";
-import { Form, InputGroup, Button, Table } from "react-bootstrap";
-import { archiveData } from "../../../pages/ourBlog/data";
+import { Table } from "react-bootstrap";
 import { SmallText, SubTitle } from "../../common/texts";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import { useSelector } from "react-redux";
-import {
-  ArchiveSkeleton,
-  ContentSceleton,
-  SearchSkeleton,
-} from "./archiveSkeleton";
 import { api } from "../../../utils/api/api";
 import { getUniqueDatesWithCount } from "../../../pages/ourBlog/logicBlog";
 import { useTranslation } from "react-i18next";
