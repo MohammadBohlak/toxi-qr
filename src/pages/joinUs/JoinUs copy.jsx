@@ -48,7 +48,6 @@ export default function JoinUsPage() {
     const day = String(today.getDate()).padStart(2, "0"); // الحصول على اليوم وتنسيقه
     const formattedDate = `${year}-${month}-${day}`; // الصيغة: YYYY-MM-DD
 
-    console.log(formattedDate); // مثال الإخراج: 2025-07-18
     axios
       .post("https://toxiqr.pythonanywhere.com/api/joinus", {
         email: "mm@m.com",

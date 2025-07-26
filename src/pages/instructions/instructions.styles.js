@@ -8,14 +8,21 @@ export const GlassSection = styled(StyledSection)`
     ${({ theme }) => theme.colors.backLight},
     ${({ theme }) => theme.colors.primary}
   );
-  padding: 4rem 0;
+  /* padding: 4rem 0; */
 `;
 
 export const Grid = styled.div`
   display: grid;
   gap: 1.5rem;
   /* بطاقات جيّدة من 1 عمود إلى 3 أعمدة */
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  div {
+    /* hyphens: auto !important; */
+    /* word-wrap: normal; */
+    /* word-wrap: normal; */
+    /* overflow-wrap: anywhere; */
+    /* hyphens: auto; */
+  }
 `;
 
 export const GlassCard = styled.div`

@@ -4,7 +4,6 @@ import img1 from "../../assets/images/snakes/1.jpg";
 import img2 from "../../assets/images/snakes/2.jpg";
 import img3 from "../../assets/images/snakes/3.jpg";
 import img4 from "../../assets/images/snakes/4.jpg";
-import img5 from "../../assets/images/snakes/5.jpg";
 import img6 from "../../assets/images/snakes/6.jpg";
 import SwiperSnakes from "../../components/homeComponents/swiperSnakes/SwiperSnakes";
 import HowWork from "../../components/homeComponents/howWork/HowWork";
@@ -24,7 +23,7 @@ const Home = () => {
   return (
     <>
       <StyledHome>
-        <SwiperSnakes images={[img6, img1, img2, img3, img4, img5]} />
+        <SwiperSnakes images={[img2, img1, img3, img4, img6]} />
         {!showLoader && (
           <>
             <HowWork />

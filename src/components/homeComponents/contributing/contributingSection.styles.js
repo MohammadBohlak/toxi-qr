@@ -8,13 +8,19 @@ export const LeftContent = styled(Col)`
   color: #fff;
   ${SubTitle} {
     margin-bottom: 15px;
+    /* hyphens: manual; */
+
+    /* word-wrap: break-word !important; */
     @media (min-width: 992px) {
-      margin-left: -5px;
+      /* margin-left: -5px; */
       font-size: 20px !important;
+      white-space: nowrap;
+      /* word-wrap: keep-all; */
     }
   }
-  padding: 50px 20px 20px 15px;
+  padding: 0px 20px 20px 15px;
   min-height: 350px;
+
   @media (max-width: 768px) {
     text-align: center;
     * {

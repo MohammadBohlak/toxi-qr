@@ -8,6 +8,12 @@ export const Submit = styled.button`
   border: 2px solid #ddd;
   padding: 10px 20px;
   border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 105px;
+  height: 55px;
   transition: color 0.3s ease, background 0.3s ease;
   &:hover {
     color: ${({ theme }) => theme.colors.primary};

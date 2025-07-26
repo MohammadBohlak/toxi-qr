@@ -1,5 +1,5 @@
 // src/pages/Detection/DetectionPage.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
@@ -14,10 +14,16 @@ import UploadImage from "../../components/homeComponents/uploadImage/UploadImage
 import FormDetection from "../../components/formDetection/FormDetection";
 import { useTranslation } from "react-i18next";
 import { Submit } from "./detection.styles";
+import axios from "axios";
+import { Spinner } from "react-bootstrap";
+import Toast from "../../components/ui/toast/Toast";
 
 export default function DetectionPage() {
   const { t } = useTranslation("home");
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [err, setErr] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   // 1) القيم الابتدائية
   const initialValues = {
     email: "",
@@ -45,12 +51,47 @@ export default function DetectionPage() {
   });
 
   // 3) عند الإرسال
-  const handleSubmit = (values) => {
+  const handleSubmit = (values, { resetForm }) => {
     console.log("Form Values:", values);
     // هنا ترسل البيانات للسيرفر أو أي إجراء آخر
+    const formData = new FormData();
+    formData.append("country", values.country);
+    formData.append("email", values.email);
+    formData.append("state", values.state);
+    formData.append("image", values.image);
+    console.log(formData);
+    setIsLoading(true);
+    axios
+      .post(
+        "https://toxiqr.pythonanywhere.com/snake_detector/api/predict/",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
+      .then((res) => {
+        console.log("✅ Response:", res.data);
+        resetForm();
+        setErr(false);
+        setMessage(t("detection.form.message"));
+      })
+      .catch((err) => {
+        setMessage(t("detection.form.message"));
+        setErr(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+        setShowToast(true);
+        setTimeout(() => {
+          setShowToast(false);
+        }, 3000);
+      });
   };
   return (
     <div style={{ background: "#fff0b6f0", paddingTop: "var(--m-top)" }}>
+      {showToast && <Toast $err={err} message={message} />}
       <MyContainer>
         <StyledSection>
           <Row className="m-0 mb-4">
@@ -83,7 +124,18 @@ export default function DetectionPage() {
                 </Row>
 
                 <div style={{ textAlign: "center", marginTop: "16px" }}>
-                  <Submit type="submit">{t("detection.form.submit")}</Submit>
+                  <Submit type="submit" disabled={isLoading}>
+                    {!isLoading ? (
+                      t("detection.form.submit")
+                    ) : (
+                      <>
+                        <Spinner
+                          animation="border"
+                          style={{ width: "40px", height: "40px" }}
+                        />
+                      </>
+                    )}
+                  </Submit>
                 </div>
               </Form>
             )}

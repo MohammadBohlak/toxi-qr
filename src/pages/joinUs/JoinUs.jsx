@@ -56,7 +56,7 @@ export default function JoinUsPage() {
 
   const handleSubmit = async (values, { resetForm }) => {
     const date = new Date().toISOString().slice(0, 10);
-    console.log({ ...values, country: countryData[values.country], date });
+    // console.log({ ...values, country: countryData[values.country], date });
     resetForm();
   };
 
@@ -99,6 +99,9 @@ export default function JoinUsPage() {
                     <option value="Mr">Mr</option>
                     <option value="Dr">Dr</option>
                     <option value="Prof">Prof</option>
+                    <option value="Eng">Eng</option>
+                    <option value="Pharm.D">Pharm.D</option>
+                    <option value="Nurse">Nurse</option>
                   </StyledSelect>
                 </RowGroup>
                 <Form.Control.Feedback

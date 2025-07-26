@@ -12,7 +12,7 @@ export const ContributingSection = () => {
           md={6}
           className="d-flex justify-content-center flex-column"
         >
-          <SubTitle $bold style={{ whiteSpace: "nowrap" }} $color="white">
+          <SubTitle $bold style={{}} $color="white">
             {t("contributing.title")}
           </SubTitle>
           <Text $color="white"> {t("contributing.description")}</Text>

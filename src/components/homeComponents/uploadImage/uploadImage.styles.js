@@ -5,7 +5,7 @@ export const UploadZone = styled.div`
   border: 2px dashed;
   border-radius: 6px;
   min-height: 180px;
-  max-height: 60vh;
+  max-height: 400px;
   overflow-y: auto;
   display: flex;
   align-items: center;

@@ -1,7 +1,7 @@
 {
   "title": "First Aid for Bites, Stings, and Poisonous Plant Exposure",
   "snake": {
-    "title": "Snake Bite:",
+    "title": "Snake Bite :",
     "steps": [
       "Request an ambulance without delay.",
       "Try to recall the snake's shape and color to assist with treatment.",
@@ -15,7 +15,7 @@
     ]
   },
   "spider": {
-    "title": "Spider Bite:",
+    "title": "Spider Bite :",
     "steps": [
       "Remain as calm as possible and try to identify the spider species if you can.",
       "Clean the bite area with soap and water.",

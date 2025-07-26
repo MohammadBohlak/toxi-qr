@@ -73,7 +73,9 @@
         "label": "Country",
         "placeholder": "Choose your country"
       },
-      "submit": "Submit"
+      "submit": "Submit",
+      "message": "Your image has been received! We’ll review it and reply to your email shortly .",
+      "msgErr": "An error occurred during the upload. Check your connection and retry later ."
     },
     "validation": {
       "email_required": "Email is required",

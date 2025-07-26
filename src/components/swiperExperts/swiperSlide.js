@@ -39,9 +39,9 @@ export const StyledSwiper = styled.section`
     padding: 0px var(--p-container);
     .left {
       flex: 1;
-      hyphens: auto !important;
+      /* hyphens: auto !important;
       -webkit-hyphens: auto;
-      -moz-hyphens: auto;
+      -moz-hyphens: auto; */
     }
     .right {
       flex: 1;
