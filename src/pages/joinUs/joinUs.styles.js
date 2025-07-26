@@ -34,10 +34,11 @@ export const RowGroup = styled.div`
   input:-internal-autofill-selected {
     appearance: menulist-button;
     background-image: none !important;
-    background-color: light-dark(
+    /* background-color: light-dark(
       rgba(232, 240, 254, 0),
       rgba(70, 90, 126, 0)
-    ) !important;
+    ) !important; */
+    background-color: white;
     color: fieldtext !important;
   }
 `;
