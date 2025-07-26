@@ -115,6 +115,9 @@ export const DownloadBtn = styled.a`
 export const BottomBar = styled.div`
   border-top: 1px solid #ccc;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 1rem 0;
   background-color: #666666;
   color: #fff;
