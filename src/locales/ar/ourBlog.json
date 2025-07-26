@@ -2,5 +2,8 @@
   "title": "مدونتنا",
   "search": "ابحث",
   "searchPlaceholder": "ابحث بالعنوان",
-  "searchNotFound": "لا يوجد نتائج"
+  "searchNotFound": "لا يوجد نتائج",
+  "archive": "الأرشيف",
+  "month": "الشهر",
+  "posts": "المنشورات"
 }

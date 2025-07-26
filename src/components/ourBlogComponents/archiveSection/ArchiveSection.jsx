@@ -14,6 +14,7 @@ import {
 } from "./archiveSkeleton";
 import { api } from "../../../utils/api/api";
 import { getUniqueDatesWithCount } from "../../../pages/ourBlog/logicBlog";
+import { useTranslation } from "react-i18next";
 const getMonthNumber = (name) => {
   const months = {
     january: 1,
@@ -42,19 +43,20 @@ const ArchiveSection = () => {
     });
   }, []);
   const showLoader = useSelector((state) => state.loader.isLoading);
+  const { t } = useTranslation("ourBlog");
   return (
     <>
       {!showLoader && (
         <>
-          <SubTitle className=" mb-4">Archive</SubTitle>
+          <SubTitle className=" mb-4">{t("archive")}</SubTitle>
           <Table striped bordered hover responsive>
             <thead>
               <tr>
                 <th>
-                  <SmallText>Month</SmallText>
+                  <SmallText>{t("month")}</SmallText>
                 </th>
                 <th>
-                  <SmallText $align="center">Posts</SmallText>
+                  <SmallText $align="center">{t("posts")}</SmallText>
                 </th>
               </tr>
             </thead>

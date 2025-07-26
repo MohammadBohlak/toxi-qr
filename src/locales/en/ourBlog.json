@@ -2,5 +2,8 @@
   "title": "Our blog",
   "search": "Search",
   "searchPlaceholder": "Search by title",
-  "searchNotFound": "No results found"
+  "searchNotFound": "No results found",
+  "archive": "Archive",
+  "month": "Month",
+  "posts": "Posts"
 }
