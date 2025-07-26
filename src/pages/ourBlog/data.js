@@ -1,5 +1,4 @@
-import blog from "../../assets/images/blog.png";
-
+import blog from "../../assets/images/blog.jpg";
 export const Dblogs = [
   {
     id: 1,

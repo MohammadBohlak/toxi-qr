@@ -2,7 +2,7 @@ import { Card } from "react-bootstrap";
 import { SmallText, SubTitle, Text } from "../../common/texts";
 import { Link } from "react-router-dom";
 import { BlogCard } from "./blogs.styles";
-import logo from "../../../assets/images/logo.png";
+import blog from "../../../assets/images/blog.jpg";
 const Blogs = ({ blogs, isOneBlog = false }) => {
   return (
     <>
@@ -15,8 +15,13 @@ const Blogs = ({ blogs, isOneBlog = false }) => {
                 item.country.slice(1).toLowerCase()}
             </SubTitle>
             <Card.Img
-              style={{ maxHeight: "180px", objectFit: "contain" }}
-              src={item.image ? item.image : logo}
+              style={{
+                maxHeight: "180px",
+                width: "100%",
+                objectFit: "contain",
+                backgroundColor: `${!item.image ? "white" : "#212832"}`,
+              }}
+              src={!item.image ? item.image : blog}
               alt={item.title}
             />
             <Card.Body className="p-0 pt-3">
