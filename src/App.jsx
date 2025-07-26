@@ -31,18 +31,7 @@ function App() {
 
   const direction = i18n.language === "ar" ? "rtl" : "ltr";
   const showLoader = useSelector((state) => state.loader.isLoading);
-  // useEffect(() => {
-  //   axios
-  //     .post("https://toxiqr.pythonanywhere.com/api/joinus", {
-  //       email: "mm@m.com",
-  //       name: "mm",
-  //       specialist: "mm",
-  //       country: "mm",
-  //       date: "2025-07-18",
-  //     })
-  //     .then((res) => console.log(res.data))
-  //     .catch((err) => console.log(err.response.data));
-  // }, []);
+
   return (
     <>
       <I18nextProvider i18n={i18n} />

@@ -1,4 +1,4 @@
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import styled from "styled-components";
 
 export const StyledJoinUs = styled.section`
@@ -15,7 +15,8 @@ export const IconWrapper = styled.span`
   align-items: center;
   color: ${({ theme }) => theme.colors.primary};
   font-size: var(--normal-text);
-  margin-right: 0.5rem;
+  margin-right: ${({ theme }) => (theme.lang === "en" ? "10px" : "auto")};
+  margin-left: ${({ theme }) => (theme.lang === "ar" ? "10px" : "auto")};
 `;
 
 export const RowGroup = styled.div`
@@ -51,13 +52,21 @@ export const CountryWrapper = styled.div`
   font-size: var(--normal-text);
 `;
 
-export const SendButton = styled(Button)`
+export const SendButton = styled.button`
   width: 50%;
   background-color: ${({ theme }) => theme.colors.primary};
   border: 2px solid ${({ theme }) => theme.colors.primary};
   font-size: var(--normal-text);
   font-weight: bold;
-  &:hover {
+  height: 50px;
+  color: white;
+  transition: background 0.3s, color 0.3s;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover,
+  &:focus {
     color: ${({ theme }) => theme.colors.primary};
     border-color: ${({ theme }) => theme.colors.primary};
     background-color: white;

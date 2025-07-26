@@ -1,7 +1,7 @@
 // src/pages/JoinUs.jsx
 
-import React from "react";
-import { Container, Form } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Form, Spinner } from "react-bootstrap";
 import {
   FiMail,
   FiUser,
@@ -25,19 +25,27 @@ import countryDataAr from "../../assets/countryAr.json";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { MainTitle } from "../../components/common/texts";
+import axios from "axios";
+import Toast from "../../components/ui/toast/Toast";
 
 const StyledSelect = styled(Form.Select)`
   flex: 1;
   font-size: var(--normal-text);
+  color: #595c5f;
 `;
 
 export default function JoinUsPage() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [err, setErr] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
   const { t } = useTranslation("joinUs");
   const lang = useSelector((state) => state.lang.language);
   const countryData = lang === "ar" ? countryDataAr : countryDataEn;
 
   const initialValues = {
-    prefix: "",
+    title: "",
     email: "",
     name: "",
     specialist: "",
@@ -45,7 +53,7 @@ export default function JoinUsPage() {
   };
 
   const validationSchema = Yup.object({
-    prefix: Yup.string().required(t("form.prefix.validation")),
+    title: Yup.string().required(t("form.prefix.validation")),
     email: Yup.string()
       .email(t("form.email.invalid"))
       .required(t("form.email.required")),
@@ -56,12 +64,34 @@ export default function JoinUsPage() {
 
   const handleSubmit = async (values, { resetForm }) => {
     const date = new Date().toISOString().slice(0, 10);
-    // console.log({ ...values, country: countryData[values.country], date });
+    const data = { ...values, country: countryData[values.country], date };
+    setIsLoading(true);
+
+    axios
+      .post("https://toxiqr.pythonanywhere.com/api/joinus/", data)
+      .then((res) => {
+        resetForm();
+        setErr(false);
+        setMessage(t("form.joinSuccess"));
+      })
+      .catch((err) => {
+        setMessage(t("form.joinError"));
+        setErr(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+        setShowToast(true);
+        setTimeout(() => {
+          setShowToast(false);
+        }, 3000);
+      });
     resetForm();
   };
 
   return (
     <StyledJoinUs>
+      {showToast && <Toast $err={err} message={message} />}
+
       <Container style={{ maxWidth: 500, margin: "2rem auto" }}>
         <MainTitle style={{ textAlign: "center", marginBottom: "1.5rem" }}>
           {t("title")}
@@ -83,17 +113,17 @@ export default function JoinUsPage() {
           }) => (
             <Form noValidate onSubmit={handleSubmit}>
               {/* Prefix */}
-              <Form.Group controlId="formPrefix" className="mb-3">
+              <Form.Group controlId="formTitle" className="mb-3">
                 <RowGroup>
                   <IconWrapper>
                     <FiPrefix />
                   </IconWrapper>
                   <StyledSelect
-                    name="prefix"
-                    value={values.prefix}
+                    name="title"
+                    value={values.title}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={touched.prefix && !!errors.prefix}
+                    isInvalid={touched.title && !!errors.title}
                   >
                     <option value="">{t("form.prefix.select")}</option>
                     <option value="Mr">Mr</option>
@@ -108,7 +138,7 @@ export default function JoinUsPage() {
                   type="invalid"
                   style={{ display: "block" }}
                 >
-                  {touched.prefix && errors.prefix}
+                  {touched.title && errors.title}
                 </Form.Control.Feedback>
               </Form.Group>
 
@@ -202,7 +232,16 @@ export default function JoinUsPage() {
 
               {/* Send */}
               <div className="d-flex justify-content-center mt-5">
-                <SendButton type="submit">{t("form.send")}</SendButton>
+                <SendButton type="submit">
+                  {!isLoading ? (
+                    t("form.send")
+                  ) : (
+                    <Spinner
+                      animation="border"
+                      style={{ width: "40px", height: "40px" }}
+                    />
+                  )}
+                </SendButton>
               </div>
             </Form>
           )}

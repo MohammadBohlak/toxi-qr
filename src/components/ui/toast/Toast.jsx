@@ -34,7 +34,6 @@ const ToastBody = styled.div`
 `;
 const Toast = ({ $err, message }) => {
   const lang = useSelector((state) => state.lang.language);
-
   return (
     <StyledToast $bg={$err ? "#ffcdd2" : "#c8e6c9 "}>
       <ToastHeader $bg={$err ? "#f44336" : "#4caf50 "}>

@@ -21,6 +21,8 @@
     "country": {
       "required": "Country is required"
     },
-    "send": "Send"
+    "send": "Send",
+    "joinSuccess": "You’ve joined successfully.",
+    "joinError": "Join process failed. Try again later."
   }
 }
