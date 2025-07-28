@@ -57,7 +57,7 @@ const Footer = () => {
                 </Text>
               </li>
               <li>
-                <Text>
+                <Text $align="initial">
                   <FooterLink to="/aid">{t("nav1.aid")}</FooterLink>
                 </Text>
               </li>

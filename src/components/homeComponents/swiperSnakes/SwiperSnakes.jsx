@@ -75,23 +75,30 @@ export default function SwiperSnakes({ images }) {
               <AiOutlineRight size={30} />
             </button>
 
-            {home.show_visitor_count && (
+            {(home.show_visitor_count || home.show_check_count) && (
               <Box $active={!transitioning} $transitioning={transitioning}>
-                <div className="visitors">
-                  <SlPeople />
-                  <div>
-                    <MainTitle>{home.visitor_count}</MainTitle>
-                    <SubTitle>Visitors</SubTitle>
+                {home.show_visitor_count && (
+                  <div className="visitors">
+                    <SlPeople />
+                    <div>
+                      <MainTitle>{home.visitor_count}</MainTitle>
+                      <SubTitle>Visitors</SubTitle>
+                    </div>
                   </div>
-                </div>
-                <div className="hr"></div>
-                <div className="checks">
-                  <BiCheckCircle />
-                  <div>
-                    <MainTitle>{home.total_images}</MainTitle>
-                    <SubTitle>Checks</SubTitle>
+                )}
+
+                {home.show_check_count && home.show_visitor_count && (
+                  <div className="hr"></div>
+                )}
+                {home.show_check_count && (
+                  <div className="checks">
+                    <BiCheckCircle />
+                    <div>
+                      <MainTitle>{home.total_images}</MainTitle>
+                      <SubTitle>Checks</SubTitle>
+                    </div>
                   </div>
-                </div>
+                )}
               </Box>
             )}
           </Swiper>

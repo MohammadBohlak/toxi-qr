@@ -10,7 +10,7 @@ export const ContributingSection = () => {
       <Row style={{ maxWidth: "100%", margin: "0" }}>
         <LeftContent
           md={6}
-          className="d-flex justify-content-center flex-column"
+          className="d-flex justify-content-start flex-column"
         >
           <SubTitle $bold style={{}} $color="white">
             {t("contributing.title")}

@@ -1,11 +1,10 @@
 // src/pages/Detection/DetectionPage.jsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { Spinner } from "react-bootstrap";
 
 import MyContainer from "../../components/ui/myContainer/MyContainer";
 import { StyledSection } from "../../components/common/sections";
@@ -13,12 +12,11 @@ import { MainTitle, SubTitle } from "../../components/common/texts";
 
 import UploadImage from "../../components/homeComponents/uploadImage/UploadImage";
 import FormDetection from "../../components/formDetection/FormDetection";
-import DetectionResultModal from "./DetectionResultModal";
-import Toast from "../../components/ui/toast/Toast";
-
 import { useTranslation } from "react-i18next";
 import { Submit } from "./detection.styles";
 import axios from "axios";
+import { Spinner } from "react-bootstrap";
+import Toast from "../../components/ui/toast/Toast";
 
 export default function DetectionPage() {
   const { t } = useTranslation("home");
@@ -26,14 +24,7 @@ export default function DetectionPage() {
   const [message, setMessage] = useState("");
   const [err, setErr] = useState(false);
   const [showToast, setShowToast] = useState(false);
-
-  const [showModal, setShowModal] = useState(false);
-  const [prediction, setPrediction] = useState({
-    confidence: 0,
-    image_url: "",
-    is_toxic: false,
-  });
-
+  // 1) القيم الابتدائية
   const initialValues = {
     email: "",
     state: "",
@@ -45,8 +36,11 @@ export default function DetectionPage() {
     email: Yup.string()
       .email(t("detection.validation.email_invalid"))
       .required(t("detection.validation.email_required")),
+
     state: Yup.string().required(t("detection.validation.state_required")),
+
     country: Yup.string().required(t("detection.validation.country_required")),
+
     image: Yup.mixed()
       .required(t("detection.validation.image_required"))
       .test(
@@ -56,55 +50,49 @@ export default function DetectionPage() {
       ),
   });
 
+  // 3) عند الإرسال
   const handleSubmit = (values, { resetForm }) => {
+    console.log("Form Values:", values);
+    // هنا ترسل البيانات للسيرفر أو أي إجراء آخر
     const formData = new FormData();
     formData.append("country", values.country);
     formData.append("email", values.email);
     formData.append("state", values.state);
     formData.append("image", values.image);
-
+    console.log(formData);
     setIsLoading(true);
     axios
       .post(
         "https://toxiqr.pythonanywhere.com/snake_detector/api/predict/",
         formData,
-        { headers: { "Content-Type": "multipart/form-data" } }
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       )
       .then((res) => {
+        console.log("✅ Response:", res.data);
         resetForm();
         setErr(false);
-        setPrediction(res.data);
-        setShowModal(true);
-      })
-      .catch(() => {
-        setErr(true);
         setMessage(t("detection.form.message"));
-        setShowToast(true);
-        setTimeout(() => setShowToast(false), 3000);
+        console.log(res.data);
       })
-      .finally(() => setIsLoading(false));
+      .catch((err) => {
+        setMessage(t("detection.form.message"));
+        setErr(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+        setShowToast(true);
+        setTimeout(() => {
+          setShowToast(false);
+        }, 3000);
+      });
   };
-
-  const handleModalOk = () => {
-    setShowModal(false);
-    setErr(false);
-    setMessage(
-      "An expert will contact you soon via email to confirm the information."
-    );
-    setShowToast(true);
-    setTimeout(() => setShowToast(false), 3000);
-  };
-
   return (
     <div style={{ background: "#fff0b6f0", paddingTop: "var(--m-top)" }}>
-      <DetectionResultModal
-        show={showModal}
-        onHide={handleModalOk}
-        prediction={prediction}
-      />
-
       {showToast && <Toast $err={err} message={message} />}
-
       <MyContainer>
         <StyledSection>
           <Row className="m-0 mb-4">
@@ -116,6 +104,7 @@ export default function DetectionPage() {
             </Col>
           </Row>
 
+          {/* 4) غلاف Formik يوفّر السياق للمكونات الفرعية */}
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -125,9 +114,12 @@ export default function DetectionPage() {
               <Form>
                 <Row className="m-0 mt-4 justify-content-center">
                   <Col md={8}>
+                    {/* مكوّن رفع الصورة مرتبط بحقل "image" */}
                     <UploadImage name="image" />
                   </Col>
+
                   <Col md={12}>
+                    {/* الحقول النصية واختيار الدولة */}
                     <FormDetection name="country" />
                   </Col>
                 </Row>
@@ -137,10 +129,12 @@ export default function DetectionPage() {
                     {!isLoading ? (
                       t("detection.form.submit")
                     ) : (
-                      <Spinner
-                        animation="border"
-                        style={{ width: "40px", height: "40px" }}
-                      />
+                      <>
+                        <Spinner
+                          animation="border"
+                          style={{ width: "40px", height: "40px" }}
+                        />
+                      </>
                     )}
                   </Submit>
                 </div>

@@ -127,11 +127,13 @@ export default function JoinUsPage() {
                   >
                     <option value="">{t("form.prefix.select")}</option>
                     <option value="Mr">Mr</option>
+                    <option value="Ms">Ms</option>
                     <option value="Dr">Dr</option>
                     <option value="Prof">Prof</option>
                     <option value="Eng">Eng</option>
-                    <option value="Pharm.D">Pharm.D</option>
                     <option value="Nurse">Nurse</option>
+                    <option value="Pharm.D">Pharm.D</option>
+                    <option value="Pharmacist">Pharmacist</option>
                   </StyledSelect>
                 </RowGroup>
                 <Form.Control.Feedback
