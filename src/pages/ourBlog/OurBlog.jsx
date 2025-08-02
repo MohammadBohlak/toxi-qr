@@ -1,51 +1,108 @@
 // src/pages/OurBlog.jsx
 import { useEffect, useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
-import { api } from "../../utils/api/api";
+import { Outlet, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+
 import MyContainer from "../../components/ui/myContainer/MyContainer";
 import { StyledSection } from "../../components/common/sections";
 import { MainTitle } from "../../components/common/texts";
-// ↓ import Outlet
-import { Outlet } from "react-router-dom";
 import { StyledInputGroup } from "./ourBlog.styles";
-import { useTranslation } from "react-i18next";
 import ArchiveSection from "../../components/ourBlogComponents/archiveSection/ArchiveSection";
-import { useSelector } from "react-redux";
+
+import { blogData } from "./data";
 
 export default function OurBlog() {
-  const lang = useSelector((state) => state.lang.language);
-  console.log(lang);
   const { t } = useTranslation("ourBlog");
-  const [allBlogs, setAllBlogs] = useState([]);
+  const lang = useSelector((state) => state.lang.language);
+  const showLoader = useSelector((state) => state.loader.isLoading);
+  const params = useParams();
+
+  // 1) البيانات الخام
+  const [rawBlogs, setRawBlogs] = useState([]);
+  // 2) after i18n transform
+  const [localBlogs, setLocalBlogs] = useState([]);
+  // 3) based on archive / detail / all
+  const [contextBlogs, setContextBlogs] = useState([]);
+  // 4) final list + search
   const [blogs, setBlogs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
+  // ————————————— Mount once —————————————
   useEffect(() => {
-    api.get("/blogs").then((res) => {
-      setAllBlogs(res.data);
-      setBlogs(res.data);
-    });
+    // fetch from API or use mock
+    // api.get("/blogs").then(res => setRawBlogs(res.data))
+    setRawBlogs(blogData);
   }, []);
-
+   
+  // —————— Localize titles/descriptions on lang/rawBlogs ——————
   useEffect(() => {
-    if (searchTerm.trim() === "") {
-      setBlogs(allBlogs);
-    }
-  }, [searchTerm, allBlogs]);
+    const localized = rawBlogs.map((b) => ({
+      ...b,
+      displayTitle: lang === "ar" ? b.title_ar || b.title : b.title,
+      displayShortDesc:
+        lang === "ar"
+          ? b.short_description_ar || b.description_ar
+          : b.short_description || b.description,
+      displayCountry: lang === "ar" ? b.country_ar : b.country,
+      displayDate: b.date,
+    }));
+    setLocalBlogs(localized);
+  }, [lang, rawBlogs]);
 
-  const handleSearch = () => {
-    const term = searchTerm.trim().toLowerCase();
-    if (!term) {
-      setBlogs(allBlogs);
+  // ————— Filter into archive / single-detail / all —————
+  useEffect(() => {
+    const keys = Object.keys(params);
+
+    // 1) Archive view: /blog/:month/:year
+    if (keys.includes("month") && keys.includes("year") && keys.length === 2) {
+      const monthNum = parseInt(params.month, 10);
+      const yearNum = parseInt(params.year, 10);
+
+      const filtered = localBlogs.filter((b) => {
+        const d = new Date(b.date);
+        return d.getMonth() + 1 === monthNum && d.getFullYear() === yearNum;
+      });
+
+      setContextBlogs(filtered);
+      setBlogs(filtered);
       return;
     }
-    const filtered = allBlogs.filter((b) =>
-      b.title.toLowerCase().includes(term)
-    );
-    setBlogs(filtered);
-  };
 
-  const showLoader = useSelector((state) => state.loader.isLoading);
+    // 2) Detail view: /blog/:id  (keys length === 3)
+    if (keys.length === 1) {
+      const id = params.id;
+      const single = localBlogs.find(
+        (b) =>b.id?.toString() === id
+      );
+      if (single) {
+        setContextBlogs([single]);
+        setBlogs([single]);
+        return;
+      }
+    }
+
+    // 3) Default: all blogs
+    setContextBlogs(localBlogs);
+    setBlogs(localBlogs);
+  }, [params, localBlogs]);
+
+  // ————— Search within the current contextBlogs —————
+  useEffect(() => {
+    const term = searchTerm.trim().toLowerCase();
+    if (!term) {
+      setBlogs(contextBlogs);
+    } else {
+      setBlogs(
+        contextBlogs.filter((b) =>
+          b.displayTitle?.toLowerCase().includes(term)
+        )
+      );
+    }
+  }, [searchTerm, contextBlogs]);
+
+  
   return (
     <StyledSection>
       <MyContainer>
@@ -64,24 +121,18 @@ export default function OurBlog() {
                     placeholder={t("searchPlaceholder")}
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        e.preventDefault();
-                        handleSearch();
-                      }
-                    }}
+                    onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
                   />
-                  <Button onClick={handleSearch}>{t("search")}</Button>
+                  <Button onClick={() => {}}>{t("search")}</Button>
                 </StyledInputGroup>
               </Col>
             </>
           ) : (
-            <div style={{ minHeight: "500px" }}></div>
+            <div style={{ minHeight: "500px" }} />
           )}
 
-          {/* ← this column is now your outlet */}
           <Col md={8}>
-            {!showLoader && <Outlet context={{ allBlogs, blogs, setBlogs }} />}
+            {!showLoader && <Outlet context={{ blogs, setBlogs,allBlogs: localBlogs,  contextBlogs,setContextBlogs}} />}
           </Col>
 
           <Col md={3}>

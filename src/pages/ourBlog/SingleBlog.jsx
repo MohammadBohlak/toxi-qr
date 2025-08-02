@@ -1,17 +1,25 @@
 // src/pages/ourBlog/SingleBlog.jsx
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useOutletContext } from "react-router-dom";
+import { useParams, useOutletContext } from "react-router-dom";
 import Blogs from "../../components/ourBlogComponents/blogs/Blogs";
+import { useTranslation } from "react-i18next";
+import { SubTitle } from "../../components/common/texts";
 
 export default function SingleBlog() {
   const { id } = useParams();
-  const { allBlogs, blogs, setBlogs } = useOutletContext();
+  const { allBlogs, blogs, setBlogs, setContextBlogs } = useOutletContext();
+  const { t } = useTranslation("ourBlog");
 
   useEffect(() => {
     const found = allBlogs.find((b) => b.id.toString() === id);
-    setBlogs(found ? [found] : []);
-  }, [id, allBlogs, setBlogs]);
+    const one = found ? [found] : [];
+    // setContextBlogs(one);
+    setBlogs(one);
+  }, [id, allBlogs, setContextBlogs, setBlogs]);
 
-  return <Blogs blogs={blogs} isOneBlog />;
+  return blogs.length > 0 ? (
+    <Blogs blogs={blogs} isOneBlog />
+  ) : (
+    <SubTitle> {t("searchNotFound")}</SubTitle>
+  );
 }

@@ -1,12 +1,14 @@
-// src/components/Archive/ArchiveSection.jsx
+// src/components/ourBlogComponents/archiveSection/ArchiveSection.jsx
 import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import { SmallText, SubTitle } from "../../common/texts";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { api } from "../../../utils/api/api";
-import { getUniqueDatesWithCount } from "../../../pages/ourBlog/logicBlog";
 import { useTranslation } from "react-i18next";
+
+import { SubTitle, SmallText } from "../../common/texts";
+import { getUniqueDatesWithCount } from "../../../pages/ourBlog/logicBlog";
+import { blogData } from "../../../pages/ourBlog/data";
+
 const getMonthNumber = (name) => {
   const months = {
     january: 1,
@@ -22,25 +24,24 @@ const getMonthNumber = (name) => {
     november: 11,
     december: 12,
   };
-
-  // تحويل الاسم إلى أحرف صغيرة قبل المطابقة
   return months[name.toLowerCase()];
 };
 
 const ArchiveSection = () => {
   const [archives, setArchives] = useState([]);
-  useEffect(() => {
-    api.get("/blogs").then((res) => {
-      setArchives(getUniqueDatesWithCount(res.data));
-    });
-  }, []);
   const showLoader = useSelector((state) => state.loader.isLoading);
   const { t } = useTranslation("ourBlog");
+
+  useEffect(() => {
+    // api.get("/blogs").then(res => setArchives(getUniqueDatesWithCount(res.data)))
+    setArchives(getUniqueDatesWithCount(blogData));
+  }, []);
+
   return (
     <>
       {!showLoader && (
         <>
-          <SubTitle className=" mb-4">{t("archive")}</SubTitle>
+          <SubTitle className="mb-4">{t("archive")}</SubTitle>
           <Table striped bordered hover responsive>
             <thead>
               <tr>
@@ -53,28 +54,23 @@ const ArchiveSection = () => {
               </tr>
             </thead>
             <tbody>
-              {archives.map((item, idx) => {
-                return (
-                  <tr key={idx}>
-                    <td>
-                      <SmallText>
-                        {" "}
-                        <Link
-                          to={`/blog/${getMonthNumber(item.month)}/${
-                            item.year
-                          }`}
-                          className="text-decoration-none"
-                        >
-                          {item.month} {item.year}
-                        </Link>
-                      </SmallText>
-                    </td>
-                    <td>
-                      <SmallText $align="center">{item.count}</SmallText>
-                    </td>
-                  </tr>
-                );
-              })}
+              {archives.map((item, idx) => (
+                <tr key={idx}>
+                  <td>
+                    <SmallText>
+                      <Link
+                        to={`/blog/${getMonthNumber(item.month)}/${item.year}`}
+                        className="text-decoration-none"
+                      >
+                        {item.month} {item.year}
+                      </Link>
+                    </SmallText>
+                  </td>
+                  <td>
+                    <SmallText $align="center">{item.count}</SmallText>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </Table>
         </>
