@@ -15,6 +15,7 @@ export default function Instructions() {
   const items = Array.from({ length: 9 }, (_, i) => t(`i${i + 1}`));
 
   return (
+    <>
     <GlassSection>
       <MyContainer>
         <MainTitle style={{ textAlign: "center", marginBottom: "2rem" }}>
@@ -33,5 +34,6 @@ export default function Instructions() {
         </Grid>
       </MyContainer>
     </GlassSection>
+          </>
   );
 }

@@ -5,7 +5,6 @@ import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
-import Footer from "./components/ui/footer/Footer";
 
 const root = createRoot(document.getElementById("root"));
 root.render(

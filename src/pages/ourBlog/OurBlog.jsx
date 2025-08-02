@@ -11,7 +11,7 @@ import { MainTitle } from "../../components/common/texts";
 import { StyledInputGroup } from "./ourBlog.styles";
 import ArchiveSection from "../../components/ourBlogComponents/archiveSection/ArchiveSection";
 
-import { blogData } from "./data";
+import { api } from "../../utils/api/api";
 
 export default function OurBlog() {
   const { t } = useTranslation("ourBlog");
@@ -32,10 +32,9 @@ export default function OurBlog() {
   // ————————————— Mount once —————————————
   useEffect(() => {
     // fetch from API or use mock
-    // api.get("/blogs").then(res => setRawBlogs(res.data))
-    setRawBlogs(blogData);
+    api.get("/blogs").then((res) => setRawBlogs(res.data));
   }, []);
-   
+
   // —————— Localize titles/descriptions on lang/rawBlogs ——————
   useEffect(() => {
     const localized = rawBlogs.map((b) => ({
@@ -73,9 +72,7 @@ export default function OurBlog() {
     // 2) Detail view: /blog/:id  (keys length === 3)
     if (keys.length === 1) {
       const id = params.id;
-      const single = localBlogs.find(
-        (b) =>b.id?.toString() === id
-      );
+      const single = localBlogs.find((b) => b.id?.toString() === id);
       if (single) {
         setContextBlogs([single]);
         setBlogs([single]);
@@ -95,51 +92,60 @@ export default function OurBlog() {
       setBlogs(contextBlogs);
     } else {
       setBlogs(
-        contextBlogs.filter((b) =>
-          b.displayTitle?.toLowerCase().includes(term)
-        )
+        contextBlogs.filter((b) => b.displayTitle?.toLowerCase().includes(term))
       );
     }
   }, [searchTerm, contextBlogs]);
 
-  
   return (
-    <StyledSection>
-      <MyContainer>
-        <Row className="justify-content-between m-0">
-          {!showLoader ? (
-            <>
-              <Col md={8} className="p-0">
-                <MainTitle $align="initial" className="mb-4">
-                  {t("title")}
-                </MainTitle>
-              </Col>
+    <>
+      <StyledSection>
+        <MyContainer>
+          <Row className="justify-content-between m-0">
+            {!showLoader ? (
+              <>
+                <Col md={8} className="p-0">
+                  <MainTitle $align="initial" className="mb-4">
+                    {t("title")}
+                  </MainTitle>
+                </Col>
 
-              <Col md={8}>
-                <StyledInputGroup className="mb-4">
-                  <Form.Control
-                    placeholder={t("searchPlaceholder")}
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
-                  />
-                  <Button onClick={() => {}}>{t("search")}</Button>
-                </StyledInputGroup>
-              </Col>
-            </>
-          ) : (
-            <div style={{ minHeight: "500px" }} />
-          )}
+                <Col md={8}>
+                  <StyledInputGroup className="mb-4">
+                    <Form.Control
+                      placeholder={t("searchPlaceholder")}
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
+                    />
+                    <Button onClick={() => {}}>{t("search")}</Button>
+                  </StyledInputGroup>
+                </Col>
+              </>
+            ) : (
+              <div style={{ minHeight: "500px" }} />
+            )}
 
-          <Col md={8}>
-            {!showLoader && <Outlet context={{ blogs, setBlogs,allBlogs: localBlogs,  contextBlogs,setContextBlogs}} />}
-          </Col>
+            <Col md={8}>
+              {!showLoader && (
+                <Outlet
+                  context={{
+                    blogs,
+                    setBlogs,
+                    allBlogs: localBlogs,
+                    contextBlogs,
+                    setContextBlogs,
+                  }}
+                />
+              )}
+            </Col>
 
-          <Col md={3}>
-            <ArchiveSection />
-          </Col>
-        </Row>
-      </MyContainer>
-    </StyledSection>
+            <Col md={3}>
+              <ArchiveSection />
+            </Col>
+          </Row>
+        </MyContainer>
+      </StyledSection>
+    </>
   );
 }

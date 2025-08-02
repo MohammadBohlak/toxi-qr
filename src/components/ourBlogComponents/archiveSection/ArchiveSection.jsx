@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 
 import { SubTitle, SmallText } from "../../common/texts";
 import { getUniqueDatesWithCount } from "../../../pages/ourBlog/logicBlog";
-import { blogData } from "../../../pages/ourBlog/data";
+import { api } from "../../../utils/api/api";
 
 const getMonthNumber = (name) => {
   const months = {
@@ -33,8 +33,7 @@ const ArchiveSection = () => {
   const { t } = useTranslation("ourBlog");
 
   useEffect(() => {
-    // api.get("/blogs").then(res => setArchives(getUniqueDatesWithCount(res.data)))
-    setArchives(getUniqueDatesWithCount(blogData));
+    api.get("/blogs").then(res => setArchives(getUniqueDatesWithCount(res.data)))
   }, []);
 
   return (
