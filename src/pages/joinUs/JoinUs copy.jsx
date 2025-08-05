@@ -48,6 +48,7 @@ export default function JoinUsPage() {
     title: "",
     email: "",
     name: "",
+    specialist: "",
     country: "",
   };
 
@@ -57,6 +58,7 @@ export default function JoinUsPage() {
       .email(t("form.email.invalid"))
       .required(t("form.email.required")),
     name: Yup.string().required(t("form.name.required")),
+    specialist: Yup.string().required(t("form.specialist.required")),
     country: Yup.string().required(t("form.country.required")),
   });
 
@@ -64,7 +66,6 @@ export default function JoinUsPage() {
     const date = new Date().toISOString().slice(0, 10);
     const data = { ...values, country: countryData[values.country], date };
     setIsLoading(true);
-    console.log(data);
 
     axios
       .post("https://toxiqr.pythonanywhere.com/api/joinus/", data)
@@ -72,7 +73,6 @@ export default function JoinUsPage() {
         resetForm();
         setErr(false);
         setMessage(t("form.joinSuccess"));
-        resetForm();
       })
       .catch((err) => {
         setMessage(t("form.joinError"));
@@ -85,6 +85,7 @@ export default function JoinUsPage() {
           setShowToast(false);
         }, 3000);
       });
+    resetForm();
   };
 
   return (
@@ -133,7 +134,6 @@ export default function JoinUsPage() {
                     <option value="Nurse">Nurse</option>
                     <option value="Pharm.D">Pharm.D</option>
                     <option value="Pharmacist">Pharmacist</option>
-                    <option value="Other">Other</option>
                   </StyledSelect>
                 </RowGroup>
                 <Form.Control.Feedback
@@ -192,7 +192,7 @@ export default function JoinUsPage() {
                 </Form.Control.Feedback>
               </Form.Group>
 
-              {/* 
+              {/* Specialist */}
               <Form.Group controlId="formSpecialist" className="mb-3">
                 <RowGroup>
                   <IconWrapper>
@@ -214,7 +214,7 @@ export default function JoinUsPage() {
                 >
                   {touched.specialist && errors.specialist}
                 </Form.Control.Feedback>
-              </Form.Group> */}
+              </Form.Group>
 
               {/* Country */}
               <Form.Group controlId="formCountry" className="mb-3">

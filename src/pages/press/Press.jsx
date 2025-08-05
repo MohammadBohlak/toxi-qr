@@ -53,17 +53,6 @@ const Press = () => {
                 <MainTitle $align="initial">{t("contactTitle")}</MainTitle>
                 <Text>{t("contact.invite")}</Text>
                 <Text>{t("contact.contribute")}</Text>
-                <Text>{t("contact.legal")}</Text>
-                <Text>
-                  <div>{t("contact.avilable")}</div>
-                  <a
-                    href="https://toxi-qr.vercel.app/"
-                    style={{ color: "#0d6efd", textDecoration: "none" }}
-                  >
-                    {t("contact.linkLabel")}
-                  </a>{" "}
-                  {t("contact.access")}
-                </Text>
               </>
             </Col>
           </StyledPress>

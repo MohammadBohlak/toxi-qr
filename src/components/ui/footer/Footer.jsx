@@ -22,6 +22,7 @@ import {
   StyledFooter,
 } from "./footer.styles";
 import Logo from "../../common/Logo";
+import { MdEmail } from "react-icons/md";
 
 const Footer = () => {
   const { t } = useTranslation("footer");
@@ -65,15 +66,16 @@ const Footer = () => {
           </Links>
           <Icons sm={12} md={4} lg={3} className="icons">
             <SocialIcon
-              href="https://facebook.com"
+              href="mailto:support@toxiqr.com"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: "white", background: "#3b5998" }}
+              style={{ color: "white", background: "#000" }}
             >
-              <FaFacebookF />
+              {/* <FaFacebookF /> */}
+              <MdEmail />
             </SocialIcon>
             <SocialIcon
-              href="https://twitter.com"
+              href="https://x.com/toxiqr1?s=21&t=oZdm7bxDoL9wRaq2QsMCVg"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: "white", background: "#000" }}
@@ -82,7 +84,7 @@ const Footer = () => {
               <img src={logoTwittter} />
             </SocialIcon>
             <SocialIcon
-              href="https://instagram.com"
+              href="https://www.instagram.com/toxiqr1?igsh=MnBkZGV2ZTlxZHN3"
               target="_blank"
               rel="noopener noreferrer"
               style={{

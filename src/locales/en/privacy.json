@@ -5,12 +5,12 @@
     "title": "Information We Collect",
     "imageUploads": {
       "title": "Image Uploads",
-      "desc": "By sending photos to ToxiQR for AI scanning, we receive the photos and hold them on a temporary basis to scan and identify the presence of poisonous or harmless species. You grant us permission to use the photo for:",
+      "desc": "By sending photos to ToxiQR for AI scanning, we receive the photos and hold them on a temporary basis to scan and identify the presence of venomous or non venomous species. You grant us permission to use the photo for:",
       "points": [
-        "AI detection and in-house testing",
+        "AI detection testing",
         "Scientific research and public awareness campaigns",
         "Education blogs or published news on wildlife identification and safety",
-        "We take care that no identifying personal information (e.g., names, geolocation data) is associated with images published in any public or scientific environment."
+        "We take care that no identifying personal information is associated with images published in any public or scientific environment."
       ]
     },
     "contactDetails": {

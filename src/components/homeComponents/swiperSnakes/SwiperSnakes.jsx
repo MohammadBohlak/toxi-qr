@@ -11,6 +11,7 @@ import { Box, StyledSlide, SwiperSection } from "./swiperSlide.styles";
 import { MainTitle, SubTitle } from "../../common/texts";
 import { api } from "../../../utils/api/api";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 export default function SwiperSnakes({ images }) {
   const prevRef = useRef(null);
@@ -19,6 +20,7 @@ export default function SwiperSnakes({ images }) {
   const [transitioning, setTransitioning] = useState(false);
   const [home, setHome] = useState({});
   const showLoader = useSelector((state) => state.loader.isLoading);
+  const { t } = useTranslation("home");
   useEffect(() => {
     api.get("/home").then((res) => {
       setHome(res.data);
@@ -82,7 +84,7 @@ export default function SwiperSnakes({ images }) {
                     <SlPeople />
                     <div>
                       <MainTitle>{home.visitor_count}</MainTitle>
-                      <SubTitle>Visitors</SubTitle>
+                      <SubTitle>{t("information.visitors")}</SubTitle>
                     </div>
                   </div>
                 )}
@@ -95,7 +97,7 @@ export default function SwiperSnakes({ images }) {
                     <BiCheckCircle />
                     <div>
                       <MainTitle>{home.total_images}</MainTitle>
-                      <SubTitle>Checks</SubTitle>
+                      <SubTitle>{t("information.checks")}</SubTitle>
                     </div>
                   </div>
                 )}

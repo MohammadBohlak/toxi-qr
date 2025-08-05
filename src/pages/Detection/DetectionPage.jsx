@@ -26,6 +26,7 @@ export default function DetectionPage() {
   const [message, setMessage] = useState("");
   const [err, setErr] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const [showPercent, setShowPercent] = useState(false);
 
   const [showModal, setShowModal] = useState(false);
   const [prediction, setPrediction] = useState({
@@ -75,6 +76,8 @@ export default function DetectionPage() {
         setErr(false);
         setPrediction(res.data);
         setShowModal(true);
+        console.log(res.data);
+        setShowPercent(res.data.confidence >= 90);
       })
       .catch(() => {
         setErr(true);
@@ -101,6 +104,7 @@ export default function DetectionPage() {
         show={showModal}
         onHide={handleModalOk}
         prediction={prediction}
+        showPercent={showPercent}
       />
 
       {showToast && <Toast $err={err} message={message} />}

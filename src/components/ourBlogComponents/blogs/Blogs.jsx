@@ -23,7 +23,7 @@ const Blogs = ({ blogs, isOneBlog = false }) => {
         return (
           <BlogCard $shadow={!isOneBlog} key={idx}>
             <SubTitle className="mb-4">
-              {idx + 1}. {lang === "ar" ? "في" : "In the"} {country}
+              {/* {idx + 1}. {lang === "ar" ? "في" : "In the"} {country} */}
             </SubTitle>
 
             <Card.Img

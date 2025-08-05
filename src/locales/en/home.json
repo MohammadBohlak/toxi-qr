@@ -6,6 +6,11 @@
     "press": "Press",
     "join": "Join us"
   },
+
+  "information": {
+    "visitors": "Visitors",
+    "checks": "Checks"
+  },
   "howWork": {
     "title": "How ToxiQR Works",
     "steps": {
@@ -16,7 +21,7 @@
   },
   "contributing": {
     "title": "Contribute to protecting people and the environment",
-    "description": "Every photo or observation you record of a snake whether found in the wild or near homes can greatly enhance our understanding of snake species and help determine their level of venomousness. Through our website, we analyze your sightings with precision to assess whether the snake is venomous, and we share this data with global biodiversity repositories to assist scientists and wildlife experts. A single photo from you could make a difference and help keep others safe."
+    "description": "Every photo or observation you record of a snake whether found in the wild or near homes can greatly enhance our understanding of snake species and help determine their destributions. Through our website, we analyze your sightings with precision to assess whether the snake is venomous, and we share this data with global biodiversity repositories to assist scientists and wildlife experts. A single photo from you could make a difference and help keep others safe."
   },
   "features": {
     "title": "First Aid for Snake and Spider Bites",
@@ -47,7 +52,7 @@
   },
   "devices": {
     "subTitle": "Works on all your devices",
-    "text": "Install our mobile apps so you can always observe, even without cell reception or Wi-Fi.",
+    "text": "Install our mobile apps so you can always observe .",
     "buttons": {
       "googlePlay": "Download on Google Play",
       "appStore": "Download on the App Store"
@@ -61,9 +66,21 @@
     "country": "Saudi Arabia"
   },
   "detection": {
-    "title": "Use ToxiQR’s Detection AI to Identify Snakes and Spiders!",
-    "subtitle": "Email Confirmation",
+    "title": "Use ToxiQR’s Detection AI to Identify Snakes!",
+    "subtitle": "Double-checked by experts. Final confirmation sent via email",
+    "modal": {
+      "title": "Detection Result",
+      "toxic": "This snake is venomous.",
+      "nonToxic": "This snake is non-venomous.",
+      "subTitle": "The final confirmation will be sent to your email .",
+      "ok": "OK"
+    },
     "form": {
+      "select": {
+        "label": "Select Type",
+        "placeholder": "Select type",
+        "opt1": "Snake"
+      },
       "email": {
         "label": "Email",
         "placeholder": "Enter your Email"

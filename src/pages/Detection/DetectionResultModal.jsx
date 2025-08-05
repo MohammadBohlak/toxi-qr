@@ -1,10 +1,10 @@
 // src/components/modal/DetectionResultModal.jsx
-import React from "react";
 import PropTypes from "prop-types";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import { MainTitle, SubTitle, Text } from "../../components/common/texts";
+import { SubTitle, Text } from "../../components/common/texts";
 import styled from "styled-components";
+import { useTransition } from "react";
+import { useTranslation } from "react-i18next";
 
 const OkButton = styled.button`
   width: 150px;
@@ -41,7 +41,14 @@ const StyledModal = styled(Modal)`
     }
   }
 `;
-export default function DetectionResultModal({ show, onHide, prediction }) {
+export default function DetectionResultModal({
+  show,
+  onHide,
+  prediction,
+  showPercent,
+}) {
+  const { t } = useTranslation("home");
+
   return (
     <>
       <StyledModal
@@ -52,17 +59,21 @@ export default function DetectionResultModal({ show, onHide, prediction }) {
       >
         <Modal.Header className="" closeButton>
           {/* <Modal.Title> */}
-          <SubTitle>Detection Result</SubTitle>
+          <SubTitle>{t("detection.modal.title")}</SubTitle>
           {/* </Modal.Title> */}
         </Modal.Header>
         <Modal.Body className="flex-column">
           <div className="d-flex flex-column align-items-center mb-3">
             <Text $align="center">
               {prediction.is_toxic
-                ? "This snake is venomous."
-                : "This snake is non-venomous."}
+                ? t("detection.modal.toxic")
+                : t("detection.modal.nonToxic")}
             </Text>
-            <Text $align="center">Confidence: {prediction.confidence} %</Text>
+            {showPercent && (
+              <></>
+              // <Text $align="center">Confidence: {prediction.confidence} %</Text>
+            )}
+            <Text $align="center">{t("detection.modal.subTitle")}</Text>
           </div>
           <div className="d-flex justify-content-center">
             <img
@@ -78,7 +89,7 @@ export default function DetectionResultModal({ show, onHide, prediction }) {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <OkButton onClick={onHide}>OK</OkButton>
+          <OkButton onClick={onHide}>{t("detection.modal.ok")}</OkButton>
         </Modal.Footer>
       </StyledModal>
     </>

@@ -4,9 +4,9 @@
   "i2": "The quality of the image plays a significant role in identifying the types of animals, so it is advisable to use high-quality photos and repeatedly upload the image from different angles to ensure the result.",
   "i3": " Results are not absolutely accurate; therefore, verification of information is recommended.",
   "i4": "ToxiQR is based on a personal, volunteer, and non-profit awareness creation.",
-  "i5": "ToxiQR cannot substitute a consultation with a physician in your home country, especially if you suspect whether the animals is toxic. In such cases, contacting local authorities of that country will be in a position to verify if the animals are poisonous.",
+  "i5": "ToxiQR cannot substitute a consultation with a physician in your home country, especially if you suspect whether the animals is venomouse. In such cases, contacting local authorities of that country will be in a position to verify if the animals are venomous.",
   "i6": "Information will be updated regularly until we achieve a high level of accuracy in our work.",
-  "i7": " The specific species may have a poisonous gland, but the criterion for evaluating the results depends mainly on the effect of this toxicity on human health.",
-  "i8": "ToxiQR will save the attached images to improve work quality and use them to train Al models. By attaching an image, you agree to its use for development and training purposes in ToxiQR.",
+  "i7": " The specific species may have a venomouse gland, but the criterion for evaluating the results depends mainly on the effect of this venom on human health.",
+  "i8": "By submitting an image to ToxiQR, you agree that it may be used for educational, scientific, and development purposes, including publication on our blog or social media, inclusion in research or posters, and training AI models to improve the platform.",
   "i9": "If you have any suggestions or complaints, please do not hesitate to contact us via ToxiQR accounts on social media or email."
 }

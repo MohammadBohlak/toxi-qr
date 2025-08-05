@@ -16,11 +16,11 @@ export const SubTitle = styled(TitleShared)`
 const TextShared = styled.div`
   text-align: ${({ $align }) => ($align ? $align : "initial")};
   color: ${({ theme, $color }) => ($color ? $color : theme.colors.text)};
-  hyphens: auto;
+  /* hyphens: auto;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   word-wrap: keep-all;
-  hyphens: manual;
+  hyphens: manual; */
   text-align: justify;
   font-weight: ${({ $bold }) => ($bold ? "bold" : "normal")};
 `;
