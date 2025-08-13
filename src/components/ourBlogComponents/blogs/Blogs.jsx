@@ -7,7 +7,10 @@ import { useSelector } from "react-redux";
 
 const Blogs = ({ blogs, isOneBlog = false }) => {
   const lang = useSelector((state) => state.lang.language);
-
+  // console.log(blogs);
+  console.log(isOneBlog);
+  if (isOneBlog) console.log(blogs[0].sections);
+  if (isOneBlog) console.log(blogs);
   return (
     <>
       {blogs.map((item, idx) => {
@@ -17,7 +20,7 @@ const Blogs = ({ blogs, isOneBlog = false }) => {
           item.description_ar && lang === "ar"
             ? item.description_ar
             : item.description;
-        const country = item.displayCountry || item.country;
+        // const country = item.displayCountry || item.country;
         const imageSrc = item.image || blog;
 
         return (

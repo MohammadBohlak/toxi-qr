@@ -10,7 +10,6 @@ import { StyledSection } from "../../components/common/sections";
 import { MainTitle } from "../../components/common/texts";
 import { StyledInputGroup } from "./ourBlog.styles";
 import ArchiveSection from "../../components/ourBlogComponents/archiveSection/ArchiveSection";
-
 import { api } from "../../utils/api/api";
 
 export default function OurBlog() {
@@ -18,7 +17,6 @@ export default function OurBlog() {
   const lang = useSelector((state) => state.lang.language);
   const showLoader = useSelector((state) => state.loader.isLoading);
   const params = useParams();
-
   // 1) البيانات الخام
   const [rawBlogs, setRawBlogs] = useState([]);
   // 2) after i18n transform
@@ -32,7 +30,9 @@ export default function OurBlog() {
   // ————————————— Mount once —————————————
   useEffect(() => {
     // fetch from API or use mock
-    api.get("/blogs").then((res) => setRawBlogs(res.data));
+    api.get("/blogs").then((res) => {
+      setRawBlogs(res.data);
+    });
   }, []);
 
   // —————— Localize titles/descriptions on lang/rawBlogs ——————

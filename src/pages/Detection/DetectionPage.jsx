@@ -19,6 +19,7 @@ import Toast from "../../components/ui/toast/Toast";
 import { useTranslation } from "react-i18next";
 import { Submit } from "./detection.styles";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 export default function DetectionPage() {
   const { t } = useTranslation("home");
@@ -28,6 +29,7 @@ export default function DetectionPage() {
   const [showToast, setShowToast] = useState(false);
   const [showPercent, setShowPercent] = useState(false);
 
+  const lang = useSelector((state) => state.lang.language);
   const [showModal, setShowModal] = useState(false);
   const [prediction, setPrediction] = useState({
     confidence: 0,
@@ -65,25 +67,46 @@ export default function DetectionPage() {
     formData.append("image", values.image);
 
     setIsLoading(true);
+    const handleShowToast = () => {
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 5000);
+    };
     axios
       .post(
         "https://toxiqr.pythonanywhere.com/snake_detector/api/predict/",
         formData,
-        { headers: { "Content-Type": "multipart/form-data" } }
+        {
+          headers: {
+            "Content-type": "multipart/form-data",
+            "x-platform": "web",
+          },
+        }
       )
       .then((res) => {
-        resetForm();
+        // resetForm();
         setErr(false);
         setPrediction(res.data);
-        setShowModal(true);
-        console.log(res.data);
-        setShowPercent(res.data.confidence >= 90);
+        if (res.data.confidence >= 90) setShowModal(true);
+        else handleShowToast();
+        // setShowPercent(res.data.confidence >= 90);
       })
-      .catch(() => {
+      .catch((err) => {
         setErr(true);
-        setMessage(t("detection.form.message"));
-        setShowToast(true);
-        setTimeout(() => setShowToast(false), 3000);
+
+        // لو الخطأ 403
+        if (err.response && err.response.status === 403) {
+          // لنفترض أن الـ backend بيبعت { message: "نص الخطأ" }
+          const backendMsg =
+            lang == "en"
+              ? err.response.data.error_en
+              : err.response.data.error_ar;
+          setMessage(backendMsg);
+        } else {
+          // بقية الأخطاء
+          setMessage(t("detection.form.message"));
+        }
+
+        handleShowToast();
       })
       .finally(() => setIsLoading(false));
   };
@@ -95,7 +118,7 @@ export default function DetectionPage() {
       "An expert will contact you soon via email to confirm the information."
     );
     setShowToast(true);
-    setTimeout(() => setShowToast(false), 3000);
+    setTimeout(() => setShowToast(false), 5000);
   };
 
   return (
