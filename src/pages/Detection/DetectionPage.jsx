@@ -84,6 +84,7 @@ export default function DetectionPage() {
       )
       .then((res) => {
         // resetForm();
+        console.log(res.data);
         setErr(false);
         setPrediction(res.data);
         if (res.data.confidence >= 90) setShowModal(true);
