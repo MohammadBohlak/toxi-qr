@@ -7,8 +7,6 @@ import { useSelector } from "react-redux";
 
 const Blogs = ({ blogs, isOneBlog = false }) => {
   const lang = useSelector((state) => state.lang.language);
-  // console.log(blogs);
-  console.log(isOneBlog);
   if (isOneBlog) console.log(blogs[0].sections);
   if (isOneBlog) console.log(blogs);
   return (

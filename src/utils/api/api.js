@@ -15,16 +15,6 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// api.interceptors.response.use(
-//   (response) => {
-//     store.dispatch(hideLoader());
-//     return response;
-//   },
-//   (error) => {
-//     store.dispatch(hideLoader());
-//     return Promise.reject(error);
-//   }
-// );
 api.interceptors.response.use(
   (response) => {
     store.dispatch(hideLoader());

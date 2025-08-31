@@ -3,8 +3,8 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 // استيراد ملفات الترجمة الموحدة لكل لغة
-import translationEn from "./locales/en/translation.json";
-import translationAr from "./locales/ar/translation.json";
+// import translationEn from "./locales/en/translation.json";
+// import translationAr from "./locales/ar/translation.json";
 import homeEn from "./locales/en/home.json";
 import homeAr from "./locales/ar/home.json";
 import instructionsEn from "./locales/en/instructions.json";
@@ -26,7 +26,7 @@ import joinUsAr from "./locales/ar/joinUs.json";
 i18n.use(initReactI18next).init({
   resources: {
     en: {
-      translation: translationEn,
+      // translation: translationEn,
       home: homeEn,
       instructions: instructionsEn,
       ourBlog: ourBlogEn,
@@ -38,7 +38,7 @@ i18n.use(initReactI18next).init({
       joinUs: joinUsEn,
     },
     ar: {
-      translation: translationAr,
+      // translation: translationAr,
       home: homeAr,
       instructions: instructionsAr,
       ourBlog: ourBlogAr,

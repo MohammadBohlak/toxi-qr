@@ -192,31 +192,6 @@ export default function JoinUsPage() {
                 </Form.Control.Feedback>
               </Form.Group>
 
-              {/* 
-              <Form.Group controlId="formSpecialist" className="mb-3">
-                <RowGroup>
-                  <IconWrapper>
-                    <FiBriefcase />
-                  </IconWrapper>
-                  <StyledControl
-                    name="specialist"
-                    type="text"
-                    placeholder={t("form.specialist.placeholder")}
-                    value={values.specialist}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    isInvalid={touched.specialist && !!errors.specialist}
-                  />
-                </RowGroup>
-                <Form.Control.Feedback
-                  type="invalid"
-                  style={{ display: "block" }}
-                >
-                  {touched.specialist && errors.specialist}
-                </Form.Control.Feedback>
-              </Form.Group> */}
-
-              {/* Country */}
               <Form.Group controlId="formCountry" className="mb-3">
                 <RowGroup>
                   <CountryWrapper>

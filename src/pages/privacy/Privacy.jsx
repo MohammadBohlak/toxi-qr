@@ -66,7 +66,6 @@ export default function Privacy() {
             />
           </div>
 
-          {/* <SubTitle> */}
           <ol>
             {/* 1. Information We Collect */}
             <li>
@@ -196,7 +195,6 @@ export default function Privacy() {
               />
             </li>
           </ol>
-          {/* </SubTitle> */}
         </StyledPrivacy>
       </StyledSection>
     </MyContainer>
