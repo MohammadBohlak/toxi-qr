@@ -59,7 +59,7 @@ const Blogs = ({ blogs, isOneBlog = false }) => {
 
                 {!isOneBlog && (
                   <SmallText>
-                    <Link to={`/blog/${item.id}`}>
+                    <Link to={`/blogs/blog/${item.id}`}>
                       {lang === "ar"
                         ? "اقرأ المقال كاملًا"
                         : "Read the full article"}

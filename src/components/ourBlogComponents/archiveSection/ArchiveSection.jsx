@@ -1,15 +1,16 @@
 // src/components/ourBlogComponents/archiveSection/ArchiveSection.jsx
 import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
 import { SubTitle, SmallText } from "../../common/texts";
 import { getUniqueDatesWithCount } from "../../../pages/ourBlog/logicBlog";
 import { api } from "../../../utils/api/api";
+import styled from "styled-components";
 
-const getMonthNumber = (name) => {
+export const getMonthNumber = (name) => {
   const months = {
     january: 1,
     february: 2,
@@ -27,20 +28,24 @@ const getMonthNumber = (name) => {
   return months[name.toLowerCase()];
 };
 
-const ArchiveSection = () => {
+const ArchiveSection = ({ getBlogs }) => {
   const [archives, setArchives] = useState([]);
   const showLoader = useSelector((state) => state.loader.isLoading);
   const { t } = useTranslation("ourBlog");
 
   useEffect(() => {
-    api.get("/blogs").then(res => setArchives(getUniqueDatesWithCount(res.data)))
+    api
+      .get("/blogs")
+      .then((res) => setArchives(getUniqueDatesWithCount(res.data)));
   }, []);
 
   return (
     <>
       {!showLoader && (
         <>
-          <SubTitle className="mb-4">{t("archive")}</SubTitle>
+          <div className="d-flex justify-content-between align-items-center">
+            <SubTitle className="mb-4">{t("archive")}</SubTitle>
+          </div>
           <Table striped bordered hover responsive>
             <thead>
               <tr>
@@ -58,7 +63,7 @@ const ArchiveSection = () => {
                   <td>
                     <SmallText>
                       <Link
-                        to={`/blog/${getMonthNumber(item.month)}/${item.year}`}
+                        to={`/blogs/${getMonthNumber(item.month)}/${item.year}`}
                         className="text-decoration-none"
                       >
                         {item.month} {item.year}

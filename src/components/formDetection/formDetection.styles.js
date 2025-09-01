@@ -13,6 +13,10 @@ export const StyledForm = styled.div`
   input {
     height: 36px;
   }
+  select {
+    box-sizing: border-box;
+    width: 100%;
+  }
   input,
   select {
     font-size: var(--small-text);

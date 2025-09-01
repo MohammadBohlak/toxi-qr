@@ -1,9 +1,8 @@
 // src/components/formDetection/FormDetection.jsx
-
 import React from "react";
 import { useFormikContext } from "formik";
 import Form from "react-bootstrap/Form";
-import CustomSelect from "./CustomSelect"; // ← استيراد المكوّن المخصّص
+import { Form as RBForm } from "react-bootstrap";
 import CountrySelect from "../countrySelect/CountrySelect";
 import { StyledForm } from "./formDetection.styles";
 import { useTranslation } from "react-i18next";
@@ -13,27 +12,30 @@ export default function FormDetection() {
     useFormikContext();
   const { t } = useTranslation("home");
 
-  // قائمة الخيارات لحقل "type"
-  const typeOptions = [
-    { value: "", label: t("detection.form.select.placeholder") },
-    { value: "Snake", label: t("detection.form.select.opt1") },
-    // أضف خيارات إضافية هنا حسب الحاجة
-  ];
-
   return (
     <StyledForm>
-      <div className="d-flex gap-4 flex-wrap">
-        {/* حقل Type باستخدام CustomSelect */}
+      <div className="d-flex  flex-wrap">
         <div style={{ maxWidth: "100%", width: "100%" }}>
-          <CustomSelect
-            name="type"
-            label={t("detection.form.select.label")}
-            options={typeOptions}
-            placeholder={t("detection.form.select.placeholder")}
-          />
+          {/* حقل Type (الجديد) */}
+          <Form.Group controlId="formType" style={{}}>
+            <Form.Label>{t("detection.form.select.label")}:</Form.Label>
+            <Form.Control
+              as="select"
+              name="type"
+              value={values.type}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              isInvalid={touched.type && !!errors.type}
+            >
+              <option value="">{t("detection.form.select.placeholder")}</option>
+              <option value="Snake">{t("detection.form.select.opt1")}</option>
+            </Form.Control>
+            <Form.Control.Feedback type="invalid">
+              {errors.type}
+            </Form.Control.Feedback>
+          </Form.Group>
         </div>
-
-        {/* حقل Country باستخدام CountrySelect */}
+        {/* حقل Country باستخدام المكوّن المخصص */}
         <Form.Group controlId="formCountry" style={{ flex: "1 1 300px" }}>
           <Form.Label>{t("detection.form.country.label")}:</Form.Label>
           <CountrySelect
@@ -45,7 +47,6 @@ export default function FormDetection() {
             <div className="invalid-feedback d-block">{errors.country}</div>
           )}
         </Form.Group>
-
         {/* حقل State */}
         <Form.Group controlId="formState" style={{ flex: "1 1 300px" }}>
           <Form.Label>{t("detection.form.state")}:</Form.Label>
@@ -62,7 +63,6 @@ export default function FormDetection() {
             {errors.state}
           </Form.Control.Feedback>
         </Form.Group>
-
         {/* حقل البريد الإلكتروني */}
         <Form.Group controlId="formEmail" style={{ flex: "1 1 300px" }}>
           <Form.Label>{t("detection.form.email.label")}:</Form.Label>

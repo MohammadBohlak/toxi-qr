@@ -112,7 +112,7 @@ export default function CustomNavbar() {
                 {t("navbar.instructions")}
               </StyledNavLink>
               <StyledNavLink
-                to="/blog"
+                to="/blogs"
                 className={({ isActive }) =>
                   isActive ? "nav-link active" : "nav-link"
                 }

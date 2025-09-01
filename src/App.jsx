@@ -50,13 +50,15 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/aid" element={<FirstAid />} />
 
-            <Route path="/blog" element={<OurBlog />}>
+            <Route path="/blogs" element={<OurBlog />}>
               {/* Index = show all/searchable blogs */}
               <Route index element={<BlogList />} />
               {/* /blog/5 → single post */}
-              <Route path=":id" element={<SingleBlog />} />
               {/* /blog/7/2023 → archives by month/year */}
               <Route path=":month/:year" element={<MonthYearBlogs />} />
+              <Route path=":month/:year/:search" element={<MonthYearBlogs />} />
+              <Route path=":search" element={<MonthYearBlogs />} />
+              <Route path="blog/:id" element={<SingleBlog />} />
             </Route>
           </Routes>
           {!showLoader && <Footer />}
