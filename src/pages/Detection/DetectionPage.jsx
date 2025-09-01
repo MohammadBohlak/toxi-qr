@@ -83,8 +83,7 @@ export default function DetectionPage() {
         }
       )
       .then((res) => {
-        // resetForm();
-        console.log(res.data);
+        resetForm();
         setErr(false);
         setPrediction(res.data);
         if (res.data.confidence >= 90) setShowModal(true);
@@ -104,7 +103,7 @@ export default function DetectionPage() {
           setMessage(backendMsg);
         } else {
           // بقية الأخطاء
-          setMessage(t("detection.form.message"));
+          setMessage(t("detection.form.msgErr"));
         }
 
         handleShowToast();
@@ -115,9 +114,8 @@ export default function DetectionPage() {
   const handleModalOk = () => {
     setShowModal(false);
     setErr(false);
-    setMessage(
-      "An expert will contact you soon via email to confirm the information."
-    );
+
+    setMessage(t("detection.form.message"));
     setShowToast(true);
     setTimeout(() => setShowToast(false), 5000);
   };

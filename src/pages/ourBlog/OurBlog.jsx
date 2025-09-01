@@ -13,89 +13,33 @@ import ArchiveSection from "../../components/ourBlogComponents/archiveSection/Ar
 import { api } from "../../utils/api/api";
 
 export default function OurBlog() {
+  // const getBlogs = () => {
+  //   api.get("/blogs").then((res) => {
+  //     setRawBlogs(res.data);
+  //   });
+  // };
+
   const { t } = useTranslation("ourBlog");
   const lang = useSelector((state) => state.lang.language);
   const showLoader = useSelector((state) => state.loader.isLoading);
   const params = useParams();
-  // 1) البيانات الخام
-  const [rawBlogs, setRawBlogs] = useState([]);
-  // 2) after i18n transform
-  const [localBlogs, setLocalBlogs] = useState([]);
-  // 3) based on archive / detail / all
-  const [contextBlogs, setContextBlogs] = useState([]);
-  // 4) final list + search
-  const [blogs, setBlogs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
-  // ————————————— Mount once —————————————
+  const [blogs, setBlogs] = useState([]);
   useEffect(() => {
-    // fetch from API or use mock
     api.get("/blogs").then((res) => {
-      setRawBlogs(res.data);
+      setBlogs(res.data);
     });
   }, []);
 
-  // —————— Localize titles/descriptions on lang/rawBlogs ——————
-  useEffect(() => {
-    const localized = rawBlogs.map((b) => ({
-      ...b,
-      displayTitle: lang === "ar" ? b.title_ar || b.title : b.title,
-      displayShortDesc:
-        lang === "ar"
-          ? b.short_description_ar || b.description_ar
-          : b.short_description || b.description,
-      displayCountry: lang === "ar" ? b.country_ar : b.country,
-      displayDate: b.date,
-    }));
-    setLocalBlogs(localized);
-  }, [lang, rawBlogs]);
-
-  // ————— Filter into archive / single-detail / all —————
-  useEffect(() => {
-    const keys = Object.keys(params);
-
-    // 1) Archive view: /blog/:month/:year
-    if (keys.includes("month") && keys.includes("year") && keys.length === 2) {
-      const monthNum = parseInt(params.month, 10);
-      const yearNum = parseInt(params.year, 10);
-
-      const filtered = localBlogs.filter((b) => {
-        const d = new Date(b.date);
-        return d.getMonth() + 1 === monthNum && d.getFullYear() === yearNum;
+  const handleSearch = () => {
+    if (searchTerm.trim() !== "") {
+      api.get(`/blogs?search=${searchTerm}`).then((res) => {
+        setBlogs(res.data);
+        // setContextBlogs(res.data);
       });
-
-      setContextBlogs(filtered);
-      setBlogs(filtered);
-      return;
     }
-
-    // 2) Detail view: /blog/:id  (keys length === 3)
-    if (keys.length === 1) {
-      const id = params.id;
-      const single = localBlogs.find((b) => b.id?.toString() === id);
-      if (single) {
-        setContextBlogs([single]);
-        setBlogs([single]);
-        return;
-      }
-    }
-
-    // 3) Default: all blogs
-    setContextBlogs(localBlogs);
-    setBlogs(localBlogs);
-  }, [params, localBlogs]);
-
-  // ————— Search within the current contextBlogs —————
-  useEffect(() => {
-    const term = searchTerm.trim().toLowerCase();
-    if (!term) {
-      setBlogs(contextBlogs);
-    } else {
-      setBlogs(
-        contextBlogs.filter((b) => b.displayTitle?.toLowerCase().includes(term))
-      );
-    }
-  }, [searchTerm, contextBlogs]);
+  };
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -118,7 +62,7 @@ export default function OurBlog() {
                       onChange={(e) => setSearchTerm(e.target.value)}
                       onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
                     />
-                    <Button onClick={() => {}}>{t("search")}</Button>
+                    <Button onClick={handleSearch}>{t("search")}</Button>
                   </StyledInputGroup>
                 </Col>
               </>
@@ -127,17 +71,11 @@ export default function OurBlog() {
             )}
 
             <Col md={8}>
-              {!showLoader && (
-                <Outlet
-                  context={{
-                    blogs,
-                    setBlogs,
-                    allBlogs: localBlogs,
-                    contextBlogs,
-                    setContextBlogs,
-                  }}
-                />
-              )}
+              <Outlet
+                context={{
+                  blogs,
+                }}
+              />
             </Col>
 
             <Col md={3}>
