@@ -66,13 +66,19 @@ export default function SingleBlog({ isOneBlog = false }) {
                         : section.description;
                     const images = section.images;
                     return (
-                      <div key={section.id} className="mb-3">
+                      <div key={section.id} className="mb-3 mt-3">
                         <Text>{description}</Text>
                         {images.map((image) => (
                           <img
+                            className="mb-2 mt-2"
                             key={image.id}
                             src={image.image}
-                            style={{ width: "300px" }}
+                            style={{
+                              width: "100%",
+                              maxWidth: "100%",
+                              maxHeight: "250px",
+                              objectFit: "cover",
+                            }}
                             alt={image.image_note ? image.image_note : "Image"}
                           />
                         ))}
